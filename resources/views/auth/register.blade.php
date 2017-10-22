@@ -8,7 +8,7 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -60,23 +60,23 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="phone-number" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
                                 <input id="phone-number" type="text" class="form-control" name="phone_number" required>
                             </div>
-                        </div> --}}
+                        </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <label for="your-age" class="col-md-4 control-label">Your Age</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="text" class="form-control" name="your_age" required>
+                                <input id="" type="date" class="form-control" name="your_age" required>
                             </div>
-                        </div> --}}
+                        </div>
 
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                           <div class="col-md-6 col-md-offset-4">
                             <label for="sel1">Your gender:</label>
                             <select name="gender" id="sel1">
@@ -84,19 +84,14 @@
                               <option value="Women">Women's</option>
                             </select>
                                 </div>
-                          </div> --}}
-
-
-
-                          {{-- <div class="form-group">
-
-
-                          <div class="col-md-6 col-md-offset-4">
+                          </div>
+                          <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
                           <label class="btn btn-default">
-                            Browse <input type="file" hidden>
+                            Browse <input type="file" name="avatar" hidden>
                         </label>
                       </div>
-                      </div> --}}
+                      </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -2,6 +2,7 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
@@ -58,5 +59,15 @@ trait RegistersUsers
     protected function registered(Request $request, $user)
     {
         //
+    }
+    public function store()
+    {
+      $avatar = new User;
+      if (Input::hasFile('avatar')) {
+        $file = Input::file('avatar');
+        $name = time() . '-' . $file->getClientOriginalName();
+        $file = $file->move(public_path(). '/img', $name);
+        $avatar->avatar = $name;
+      }
     }
 }

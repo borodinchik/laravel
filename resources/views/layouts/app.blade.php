@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } )
+  </script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

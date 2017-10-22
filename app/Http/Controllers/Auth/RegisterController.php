@@ -52,8 +52,9 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'phone_number' => 'required|max:13',
-            'your_age' => 'required|numeric',
+            'your_age' => 'required',
             'gender' => 'required',
+            'avatar' => 'required | mimes:jpeg,jpg,png | max:1000',
 
 
         ]);
@@ -74,6 +75,7 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'your_age' => $data['your_age'],
             'gender' => $data['gender'],
+            'avatar' => $data['avatar'],
 
         ]);
     }

@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Input;
 
 trait RegistersUsers
 {
@@ -60,14 +61,4 @@ trait RegistersUsers
     {
         //
     }
-    public function store()
-    {
-      $avatar = new User;
-      if (Input::hasFile('avatar')) {
-        $file = Input::file('avatar');
-        $name = time() . '-' . $file->getClientOriginalName();
-        $file = $file->move(public_path(). '/img', $name);
-        $avatar->avatar = $name;
-      }
-    }
-}
+  }

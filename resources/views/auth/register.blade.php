@@ -60,7 +60,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="phone-number" class="col-md-4 control-label">Phone Number</label>
 
                             <div class="col-md-6">
@@ -84,14 +84,14 @@
                               <option value="Women">Women's</option>
                             </select>
                                 </div>
-                          </div>
-                          <div class="form-group">
+                          </div> --}}
+                          {{-- <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                           <label class="btn btn-default">
                             Browse <input type="file" name="avatar" hidden>
                         </label>
                       </div>
-                      </div>
+                      </div> --}}
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

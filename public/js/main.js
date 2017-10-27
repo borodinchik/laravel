@@ -5,8 +5,8 @@ $('#input').click(function(){
     $('#sites').append(str);
   });
 var url = 'http://127.0.0.1:8000/questions/questions/';
-  $.ajax({
-    method:"PUT";
-    url: url ,
-
-  });
+  // $.ajax({
+  //   method:"PUT";
+  //   url: url ,
+  //
+  // });

@@ -5,7 +5,8 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <div class="panel panel-default">
-                  <div class="panel-heading">Список Опросов</div>
+                  <div class="panel-heading">Список Опросов
+                    <a style="float:right" href="#">Результаты опроса</a></div>
 
                   <div class="panel-body">
                       @if (session('status'))
@@ -15,14 +16,19 @@
                       @endif
                         @foreach ($questions as $question)
 
-                          {{-- <a class="link" href="/questions/{{ $questions->id }}"> --}}
                           <div class="form-group">
-                            <h3>{{ $question->title }}</h3><button class="btn btn-sm btn-danger" type="button" name="delete">Deleted</button><hr>
+                            <h3>{{ $question->title }}</h3>
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['delete.question', $question->id]]) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                            {{-- <form class="" action="/questions/{{ $question->id }}" method="delete"> --}}
 
+                              {{-- <button  class="btn btn-sm btn-danger"type="button" name="button">Delete</button> --}}
 
+                            {{-- </form> --}}
+                            {!! Form::close() !!}
                           </div>
 
-                          {{-- </a><hr> --}}
+
 
                         @endforeach
 

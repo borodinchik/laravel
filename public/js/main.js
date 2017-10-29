@@ -4,9 +4,16 @@ $('#input').click(function(){
     var str = '<input class="form-control" type="text" name="answer[]-' +random+ '" placeholder="Вариант ответа:"/><br> ';
     $('#sites').append(str);
   });
-var url = 'http://127.0.0.1:8000/questions/questions/';
-  // $.ajax({
-  //   method:"PUT";
-  //   url: url ,
-  //
-  // });
+// var url = 'http://127.0.0.1:8000/questions/questions/';
+
+
+$(function() {
+  $('#myBtn').click(function() {
+    $('#myModal').css('display','block');
+
+  })
+  $('#close').click(function(){
+    $('#myModal').hide();
+
+  })
+})

@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
       User::create([
-        'name' => 'Александр',
+        'name' => 'Игнатьев Александр Витальевич',
         'email' => 'sasha@gmail.com',
         'password' => bcrypt('vladymyr'),
         'phone_number' => '0969857563',
@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Петр',
+        'name' => 'Алексеев Петр Захарович',
         'email' => 'peyro@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857489',
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Алексей',
+        'name' => 'Богданов Алексей Антонович',
         'email' => 'alex@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857552',
@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Виктор',
+        'name' => 'Осипко Виктор Андреевич',
         'email' => 'vit@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857745',
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Денис',
+        'name' => 'Борода Денис Георгеевич',
         'email' => 'den@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857589',
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Захар',
+        'name' => 'Кривой Захар Петровичь',
         'email' => 'zahar@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857147',

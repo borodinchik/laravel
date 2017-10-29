@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Admin Создание опроса</div>
+                <div class="panel-heading">Admin Создание опроса<a  style="float: right;" href="{{ route('show.all.users') }}">All Users</a></div>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">

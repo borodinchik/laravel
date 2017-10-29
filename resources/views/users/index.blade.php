@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
   <div class="container">
@@ -17,7 +17,7 @@
                         @foreach ($questions as $question)
 
                           <div class="form-group">
-                            <h3>{{ $question->title }}</h3>
+                             <a href="#">{{ $question->title }}</a>
                             {{-- {!! Form::open(['method' => 'DELETE', 'route' => ['delete.question', $question->id]]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!} --}}
                             {{-- <form class="" action="/questions/{{ $question->id }}" method="delete"> --}}
@@ -40,4 +40,4 @@
       </div>
   </div>
 
-@endsection --}}
+@endsection

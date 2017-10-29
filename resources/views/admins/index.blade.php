@@ -1,12 +1,21 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
+
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <div class="panel panel-default">
                   <div class="panel-heading">Список Опросов
-                    <a style="float:right" href="#">Результаты опроса</a></div>
+                  <button id="myBtn" style="float:right" type="button" name="button" class="btn btn-sm">
+                    Результат опроса</button>
+                    <div id="myModal" class="modal">
+                    <div class="modal-content">
+                      <span id="close">x</span>
+                      <p>HI</p>
+                    </div>
+                    </div>
+                  </div>
 
                   <div class="panel-body">
                       @if (session('status'))
@@ -18,13 +27,8 @@
 
                           <div class="form-group">
                             <h3>{{ $question->title }}</h3>
-                            {{-- {!! Form::open(['method' => 'DELETE', 'route' => ['delete.question', $question->id]]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!} --}}
-                            {{-- <form class="" action="/questions/{{ $question->id }}" method="delete"> --}}
-
-                              {{-- <button  class="btn btn-sm btn-danger"type="button" name="button">Delete</button> --}}
-
-                            {{-- </form> --}}
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['delete.question', $question->id]]) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
                             {!! Form::close() !!}
                           </div>
 
@@ -40,4 +44,4 @@
       </div>
   </div>
 
-@endsection --}}
+@endsection

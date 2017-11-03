@@ -13,20 +13,20 @@ class AnswerTableSeeder extends Seeder
     public function run()
     {
         Answer::create([
-          'answer' => 'Тойота',
+          'answer' => 'Велосипед',
           'question_id' => '1',
 
         ]);
         Answer::create([
-          'answer' => 'Мицубищи',
+          'answer' => 'Автомобиль',
           'question_id' => '1',
         ]);
         Answer::create([
-          'answer' => 'Вольво',
+          'answer' => 'Трамвай',
           'question_id' => '1',
         ]);
         Answer::create([
-          'answer' => 'Опель',
+          'answer' => 'Ролики',
           'question_id' => '1',
         ]);
         ////////////////////
@@ -41,6 +41,36 @@ class AnswerTableSeeder extends Seeder
         Answer::create([
           'answer' => 'Очень активный',
           'question_id' => '2',
+        ]);
+        //////////////////////////////////
+        Answer::create([
+          'answer' => 'Курю',
+          'question_id' => '3',
+        ]);
+        Answer::create([
+          'answer' => 'Пью',
+          'question_id' => '3',
+        ]);
+        Answer::create([
+          'answer' => 'Не курю и не пью',
+          'question_id' => '3',
+        ]);
+        ////////////////////
+        Answer::create([
+          'answer' => 'Зима',
+          'question_id' => '4',
+        ]);
+        Answer::create([
+          'answer' => 'Весна',
+          'question_id' => '4',
+        ]);
+        Answer::create([
+          'answer' => 'Лето',
+          'question_id' => '4',
+        ]);
+        Answer::create([
+          'answer' => 'Осень',
+          'question_id' => '4',
         ]);
     }
 }

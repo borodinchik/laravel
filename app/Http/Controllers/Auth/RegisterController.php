@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Input ;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -77,20 +78,18 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             // 'avatar' => $data['avatar'],
 
+
+
           ]);
+    //       if (Input::hasFile('avatar')) {
+    //         $file = Input::file('avatar');
+    //         $name = time() . '-' . $file->getClientOriginalName();
+    //         $file = $file->move(public_path().'/img/', $name);
+    //         $avatar->avatar = $name;
+    //
+    //
+    // }
+    // $avatar->save();
 
-
-    }
-// protected function store(Request $request)
-// {
-//   $avatar = new User;
-//
-//   if (Input::hasFile('avatar')) {
-//     $file = Input::file('avatar');
-//     $name = time() . '-' . $file->getClientOriginalName();
-//     $file = $file->move(public_path().'/img/', $name);
-//     $avatar->avatar = $name;
-//   }
-//   $avatar->save();
-// }
+}
 }

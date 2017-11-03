@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
   <div class="container">
       <div class="row">
-          <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-6 col-md-offset-4">
               <div class="panel panel-default">
                   <div class="panel-heading">Список Опросов
-                    <a style="float:right" href="#">Результаты опроса</a></div>
+                  </div>
 
                   <div class="panel-body">
                       @if (session('status'))
@@ -14,30 +15,60 @@
                               {{ session('status') }}
                           </div>
                       @endif
-                        @foreach ($questions as $question)
+                      @foreach ($questions as $question)
+                            <div class="form-group">
 
-                          <div class="form-group">
-                             <a href="#">{{ $question->title }}</a>
-                            {{-- {!! Form::open(['method' => 'DELETE', 'route' => ['delete.question', $question->id]]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!} --}}
-                            {{-- <form class="" action="/questions/{{ $question->id }}" method="delete"> --}}
+                              <a  class="question-id" data-question-id="{{ $question->id }}">{{-- Передаю id  в ajax --}}
 
-                              {{-- <button  class="btn btn-sm btn-danger"type="button" name="button">Delete</button> --}}
+                                {{ $question->title }}</a>
 
-                            {{-- </form> --}}
-                            {!! Form::close() !!}
-                          </div>
+                              </div>
 
+                                <hr>
+                                                        <div class="myModal-{{ $question->id }}" class="modal">
+                                                              <div class="modal-content">
 
-
-                        @endforeach
+                                                                {{-- @foreach ($questions as $question) --}}
 
 
-                    </form>
-                  </div>
+                                                                    {{-- <div class="form-group"> --}}
+
+
+
+                                                                <form class="" action="index.html" method="post">
+
+                                                                  <span class="close">&times</span>
+
+                                                                    <h4 class="text-center">{{ $question->body }}</h4>
+
+                                                                  {{ csrf_field() }}
+
+                                                                  @foreach ($question->answer as $value)
+
+                                                                    {{ $value->answer }}
+
+                                                                  <input type="radio" name="answer[]" value="{{ $value->answer }}" checked>
+
+                                                                @endforeach
+
+                                                                <br><button class="btn btn-sm btn-primary" type="button" name="button">Сохранить</button>
+
+                                                              </form>
+                                                            {{-- </div> --}}
+                                                            {{-- @endforeach --}}
+                                                          </div>
+
+                                                        </div>
+                            @endforeach
+
+
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
               </div>
           </div>
       </div>
   </div>
-
 @endsection

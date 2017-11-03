@@ -13,13 +13,22 @@ class QuestionsTableSeeder extends Seeder
     public function run()
     {
       Question::create([
-        'title' => 'Автомобиль',
-        'body' => 'Какой марки был вашь первый автомобиль?',
+        'title' => 'Транспорт',
+        'body' => 'Какой транспорт вы предпочитаете?',
       ]);
       Question::create([
         'title' => 'ЗОЖ',
         'body' => 'Какой образ жизни вы видете?',
       ]);
+      Question::create([
+        'title' => 'Вредные привычки',
+        'body' => 'Какие у вас вредные привычки',
+      ]);
+      Question::create([
+        'title' => 'Время года',
+        'body' => 'Какая время года вам ближе?',
+      ]);
+
 
     }
 }

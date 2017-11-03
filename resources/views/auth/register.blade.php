@@ -84,8 +84,8 @@
                               <option value="Women">Женский</option>
                             </select>
                                 </div>
-                          {{-- </div>
-                          <div class="form-group">
+                          </div>
+                          {{-- <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                           <label class="btn btn-default">
                             Browse <input type="file" name="avatar" hidden>

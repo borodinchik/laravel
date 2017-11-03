@@ -27,22 +27,24 @@ Route::prefix('admin')->group(function(){
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
   Route::get('/all_users', 'AdminController@showAllUsers')->name('show.all.users');
-  Route::get('/all_questions', 'AdminController@indexQuestionsList');
-
+  Route::get('/all_questions', 'AdminController@indexQuestionsList')->name('all-questions');
   Route::delete('/{id}', 'AdminController@destroy')->name('delete.question');
 
-  // Route::get('/', 'AdminController@show')->name('get.question');
+
 
 
 
 });
 //Questions Routes
-Route::prefix('questions')->group(function(){
-  // Route::get('/', 'QuestionController@index');
-  Route::post('/', 'QuestionController@store');
-  // Route::get('/{questions}', 'QuestionController@show')->name('get.question');
-  // Route::delete('/{questions}', 'QuestionController@destroy')->name('delete.question');
+Route::prefix('user')->group(function(){
 
-
-
+Route::get('/', 'UserController@index');
+// Route::get('/question', 'UserController@create');
+Route::post('/{id}', 'UserController@show')->name('show.question');
+Route::post('/', 'UserController@sendFormAnswer');
 });
+
+Route::get('/column', 'AnswerController@getAnswer');
+
+
+  Route::post('questions', 'QuestionController@store');

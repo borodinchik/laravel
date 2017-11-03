@@ -43,12 +43,5 @@ public function index(Question $questions){
       return redirect()->back();
 
     }
-    //Delete quwestions
-    // public function destroy($id){
-    //   $question = Question::with(['answer'])
-    //   ->where('id', '=', $id );
-    //   $question->delete();
-    //   return redirect()->back();
-    //
-    // }
+
 }

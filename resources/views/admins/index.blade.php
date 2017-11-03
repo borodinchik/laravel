@@ -6,16 +6,17 @@
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <div class="panel panel-default">
-                  <div class="panel-heading">Список Опросов
-                  <button id="myBtn" style="float:right" type="button" name="button" class="btn btn-sm">
-                    Результат опроса</button>
-                    <div id="myModal" class="modal">
-                    <div class="modal-content">
-                      <span id="close">x</span>
-                      <p>HI</p>
-                    </div>
-                    </div>
-                  </div>
+                  <div class="panel-heading">Список Опросов<a href="{{ route('admin.dashboard') }}">|Admin panel</a>
+                      <a class="result" style="float: right;">Результат опросов</a>
+
+                      <div class="my_result_modal" >
+                        <div class="modal-content">
+                          <span id="close">&times</span>
+
+                        </div>
+
+                          </div>
+
 
                   <div class="panel-body">
                       @if (session('status'))

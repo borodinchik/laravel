@@ -11,19 +11,15 @@ use App\Answer;
 class UserController extends Controller
 {
   //Вытягиваем весь сисок опросов
-    public function index()
-    {
+public function index()
+  {
       $questions= Question::get();
-      // dd($questions->toArray());
-      return view('users.index', compact('questions'));
-    }
-    public function show($id)
-    {
-      $questions= Question::with(['answer'])->where('id', '=' ,$id)->first();
+          return view('users.index', compact('questions'));
+        }
+
+public function show($id)
+ {
+   $questions= Question::with(['answer'])->where('id', '=' ,$id)->first();
           return view('users.show', compact('questions'));
-          // dd($questions->toArray());
-
-  }
-
-
-}
+        }
+      }

@@ -10,15 +10,12 @@
                       <a class="result" style="float: right;">Результат опросов</a>
 
                       <div class="my_result_modal" >
-                        <div class="modal-content">
-                          <span id="close">&times</span>
-
+                        <div class="modal-content-charts">
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                          <span class="close">&times</span>
                         </div>
-
-                          </div>
-
-
-                  <div class="panel-body">
+                      </div>
+                          <div class="panel-body">
                       @if (session('status'))
                           <div class="alert alert-success">
                               {{ session('status') }}

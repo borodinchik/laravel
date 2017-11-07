@@ -33,6 +33,6 @@ Route::prefix('admin')->group(function(){
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
     Route::post('/{id}', 'UserController@show')->name('show.question');
-    Route::post('/', 'UserController@sendFormAnswer');
+    Route::post('/create', 'UserController@storeUserAnswer');
 });
-Route::get('/column', 'AnswerController@getAnswer');//этот роут передает данные опросов юзеров в график
+//Route::get('/column', 'AnswerController@getAnswer');//этот роут передает данные опросов юзеров в график

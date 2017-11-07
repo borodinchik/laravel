@@ -29,7 +29,7 @@ public function show($id)
  }
 public function store(QuestionsRequest $request)
  {
-      //Create new qwestions
+//Админ добовляет новый опрос для юзеров
     $question = new Question();
     $question->title = $request['title'];
     $question->body = $request['body'];

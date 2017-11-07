@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserAnswers;
+use App\Answer;
 
 class AnswerController extends Controller
 {
@@ -14,4 +14,12 @@ public function getAnswer()
         ->selectRaw('answer_id, count(*) as count')->get()->toJson();
             return $getAnswer;
           }
+public function getInfoToGrap()
+{
+  $getInfoToGrap = Answer::groupBy('answer')
+      ->selectRaw('answer, count(*) as count')->get()->toJson();
+      return $getInfoToGrap;
+
+
+}
 }

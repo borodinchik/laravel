@@ -24,7 +24,7 @@
   <div class="cartQuestions myModal-{{ $question->id }}" >
     <div class="modal-content">
 
-      <form  action="/user/create" method="post">
+      <form  action="user/create" method="post">
         <span class="close">&times</span>
           <h4 class="text-center">{{ $question->body }}</h4>
           {{ csrf_field() }}
@@ -34,7 +34,7 @@
 
       <input type="radio" name="user_response[]" value="{{ $value->answer }}" checked>
         @endforeach
-        <br><button class="btn btn-sm btn-primary" type="submit" name="save">Сохранить</button>
+        <br><button class="btn btn-sm btn-primary" type="submit">Сохранить</button>
       </form>
                 </div>
               </div>

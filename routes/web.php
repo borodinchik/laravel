@@ -13,6 +13,7 @@
 
 
 
+
 Auth::routes();
 Route::get('/', function()
 {
@@ -28,6 +29,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/all_users', 'AdminController@showAllUsers')->name('show.all.users');
     Route::get('/all_questions', 'AdminController@indexQuestionsList')->name('all-questions');
     Route::delete('/{id}', 'AdminController@destroy')->name('delete.question');
+    //test Routes
+    Route::get('/column', 'AnswerController@getInfoToGrap');
   });
 //Questions Routes
 Route::prefix('user')->group(function() {

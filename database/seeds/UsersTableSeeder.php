@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     {
       //до 18 лет
       User::create([
-        'name' => 'Игнатьев Александр Витальевич',
+        'name' => 'Игнатьев Александр Витальевич',//нет 18
         'email' => 'sasha.zp@gmail.com',
         'password' => bcrypt('vladymyr'),
         'phone_number' => '0969857563',
@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Алексеев Петр Захарович',
+        'name' => 'Алексеев Петр Захарович',//нет 18
         'email' => 'peyro.zp@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857489',
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Богданов Алексей Антонович',
+        'name' => 'Богданов Алексей Антонович',//нет 18
         'email' => 'alex.zp@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857552',
@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
         'gender' => 'Man',
       ]);
       User::create([
-        'name' => 'Осипко Виктор Андреевич',
+        'name' => 'Осипко Виктор Андреевич',//нет 18
         'email' => 'vit@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857745',
@@ -108,7 +108,7 @@ class UsersTableSeeder extends Seeder
         'email' => 'vika@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0969857589',
-        'your_age' => '2001-01-13',
+        'your_age' => '1986-01-13',
         'gender' => 'Women',
       ]);
       User::create([
@@ -116,6 +116,23 @@ class UsersTableSeeder extends Seeder
         'email' => 'anna@gmail.com',
         'password' => bcrypt('123456'),
         'phone_number' => '0968857147',
+        'your_age' => '1994-01-13',
+        'gender' => 'Women'
+      ]);
+      ///////////
+      User::create([
+        'name' => 'Никитина Олеся Вадимивна',//нет 18
+        'email' => 'olesia@gmail.com',
+        'password' => bcrypt('123456'),
+        'phone_number' => '0969957589',
+        'your_age' => '2001-03-13',
+        'gender' => 'Women',
+      ]);
+      User::create([
+        'name' => 'Игнатько Анна Сергеевна',//нет 18
+        'email' => 'anny@gmail.com',
+        'password' => bcrypt('123456'),
+        'phone_number' => '0912857147',
         'your_age' => '2003-01-13',
         'gender' => 'Women'
       ]);

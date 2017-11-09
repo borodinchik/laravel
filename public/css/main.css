@@ -1,10 +1,10 @@
 .modal-content {
-    display: flex;
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 15px;
-    border: 1px solid #888;
-    width: 26em;
+  display: table;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 15px;
+  border: 1px solid #888;
+  width: auto;
 }
 .close {
     cursor: pointer;

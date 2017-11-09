@@ -23,7 +23,7 @@ function getUserAttr(dataQuestionId) {
     if (dataQuestionId) {
         $.ajax({
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            type: "POST",
+            method: "POST",
             url: window.location.href + '/' + dataQuestionId,
             dataType: 'html',
             success: function(data) {
@@ -99,3 +99,19 @@ function doSome(){
   });
 
 });
+//Ajax Запрос на добовление варианта ответа юзера !
+function saveUserAnswer(methodPost, url, type, headers) {
+  $('.form-save').on('click', function () {
+    $.ajax({
+      headers: headers,
+      method: methodPost,
+      url: url,
+      dataType: type,
+      success: function(data) {
+      }
+    });
+    return false;
+  });
+};
+saveUserAnswer("POST","http://127.0.0.1:8000/user/store",'html',{
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},);

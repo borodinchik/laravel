@@ -59,7 +59,7 @@ function getAjax(newMethod,paramUrl,callback) {
 function parseResponse(responseRet) {
   console.log(responseRet);
   var responseObj = responseRet.map(function (myArrayObj) {
-        return myArrayObj.count;
+        return myArrayObj.question_id;
 
   });
   alert(responseObj);

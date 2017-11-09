@@ -16,8 +16,8 @@ public function getAnswer()
           }
 public function getInfoToGrap()
 {
-  $getInfoToGrap = Answer::groupBy('answer')
-      ->selectRaw('answer, count(*) as count')->get()->toJson();
+  $getInfoToGrap = Answer::groupBy('question_id')
+      ->selectRaw('question_id, count(*) as count')->get()->toJson();
       return $getInfoToGrap;
 
 

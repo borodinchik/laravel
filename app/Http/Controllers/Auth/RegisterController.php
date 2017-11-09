@@ -55,20 +55,25 @@ class RegisterController extends Controller
             'phone_number' => 'required|max:13',
             'your_age' => 'required',
             'gender' => 'required',
-            // 'avatar' => 'required|mimes:jpeg,jpg,png|max:1000',
-
-
-        ]);
+            'avatar' => 'required|mimes:jpeg,jpg,png|max:1000',
+          ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
+     * Добавляет фото юзера
      * @param  array  $data
      * @return \App\User
      */
     protected function create(array $data)
     {
+      $fileName = 'null';
+      if (Input::file('avatar')->isValid()) {
+        $destanetionPath = public_path('uploads/user_avatar');
+        $extension = Input::file('avatar')->getClientOriginalExtension();
+        $fileName = uniqid(). '.' .$extension;
+        Input::file('avatar')->move($destanetionPath, $fileName);
+      }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -76,7 +81,7 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'your_age' => $data['your_age'],
             'gender' => $data['gender'],
-            // 'avatar' => $data['avatar'],
+            'avatar' => $fileName,
 
 
 

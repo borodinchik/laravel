@@ -85,13 +85,13 @@
                             </select>
                                 </div>
                           </div>
-                          {{-- <div class="form-group">
+                          <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                           <label class="btn btn-default">
                             Browse <input type="file" name="avatar" hidden>
                         </label>
                       </div>
-                      </div> --}}
+                      </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

@@ -6,7 +6,7 @@
       <div class="row">
           <div class="col-md-4 col-md-offset-4">
               <div class="panel panel-default">
-                  <div class="panel-heading">Список Опросов
+                  <div class="panel-heading">Список Опросов<img class="avatar" src="/uploads/user_avatar/{{ Auth::user()->avatar }}" alt="">
                   </div>
                       <div class="panel-body">
                       @if (session('status'))
@@ -24,7 +24,7 @@
   <div class="cartQuestions myModal-{{ $question->id }}" >
     <div class="modal-content">
 
-      <form  action="user/create" method="post">
+      <form  action="{{ route('save.answer.user') }}" method="POST">
         <span class="close">&times</span>
           <h4 class="text-center">{{ $question->body }}</h4>
           {{ csrf_field() }}
@@ -32,7 +32,7 @@
 
       {{ $value->answer }}
 
-      <input type="radio" name="user_response[]" value="{{ $value->answer }}" checked>
+      <input type="radio" name="user_answer[]" value="{{ $value->answer }}" checked>
         @endforeach
         <br><button class="btn btn-sm btn-primary" type="submit">Сохранить</button>
       </form>

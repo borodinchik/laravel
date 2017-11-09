@@ -38,6 +38,16 @@ trait RegistersUsers
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
+                        //Добавляем фотоюзера
+
+              if (Input::hasFile('avatar')) {
+                $file = Input::file('avatar');
+                $name = time() . '-' . $file->getClientOriginalName();
+                $file = $file->move(public_path().'/img/', $name);
+                $avatar->avatar = $name;
+              }
+        $avatar->save();
+
     }
 
     /**

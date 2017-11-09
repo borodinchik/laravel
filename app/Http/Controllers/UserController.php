@@ -12,6 +12,10 @@ use App\Answer;
 
 class UserController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
   //Вытягиваем весь сисок опросов
 public function index()
   {
@@ -26,11 +30,13 @@ public function show($id)
  }
 public function storeUserAnswer(UserAnswerRequest $request)
 {//Добавляем ответ юзера в базу данных в таблицу answers
-      $userAnswer = new UserResponseOption();
-      $userAnswer->user_response = $request['user_response'];
+      $userAnswer = new UserAnswers();
+      $userAnswer->user_answer = $request['user_answer'];
       // dd($userAnswer->toArray());
       $userAnswer->save();
         return redirect()->back();
+
 }
+
 
       }

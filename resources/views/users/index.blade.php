@@ -25,7 +25,7 @@
                         <div class="cartQuestions myModal-{{ $question->id }}" >
                           <div class="modal-content">
                             <div class="form-group">
-                            <form  action="" method="post" id="saveForm">
+                            <form  action="" method="post"  class="form-save">
                               <span class="close">&times</span>
                                 <h4 class="text-center">{{ $question->body }}</h4>
                                   {{ csrf_field() }}
@@ -33,7 +33,7 @@
                                       {{ $value->answer }}
                                         <input type="radio" name="user_answer" value="{{ $value->answer }}" required>
                                       @endforeach
-                                        <br><button class="btn btn-sm btn-primary form-save" type="button">Сохранить</button>
+                                        <br><button class="btn btn-sm btn-primary form-save" type="submit">Сохранить</button>
                                       </form>
                                     </div>
                                   </div>

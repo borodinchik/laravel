@@ -98,16 +98,16 @@ $('.result').on('click', function () {
       getDataGraph();
   });
   //Ajax Запрос на добовление варианта ответа юзера !
-  $('.form-save').on('click', function () {
-    var form = document.getElementById("saveForm");
-    var user_answer =  form.elements["user_answer"].value;
-      saveUserAnswer(user_answer);
+  $('.form-save').on('submit', function (e) {
+    e.preventDefault();
+    var formValue = $(this).find('input:checked').val();
+      saveUserAnswer(formValue);
     });
 
-function saveUserAnswer(user_answer) {
-  getAjax('POST',"http://127.0.0.1:8000/user/store",user_answer,function (result) {
+function saveUserAnswer(abc) {
+  getAjax('POST',"http://127.0.0.1:8000/user/store",abc,function (result) {
     if (result != "error!" ){
-        alert(user_answer);
+        alert(abc);
     }else{
       console.log(result,"User answer not add");
     }

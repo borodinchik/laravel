@@ -1,5 +1,5 @@
 $(document).ready(function() {
-//Adds new input in the form
+//Добавляем новый инпу варианта ответа вадминке
 $('#input').click(function() {
     var random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
     var str = '<input class="form-control" type="text" name="answer[]-' +
@@ -7,31 +7,46 @@ $('#input').click(function() {
     $('#sites').append(str);
 });
 //С помощью ajax выводим мадалку и форму по id
-
-    $('.question-id').on('click', function(event) {
-        var currentTarget = $(event.currentTarget);
-        var dataQuestionId = currentTarget.attr('data-question-id');
-        getUserAttr(dataQuestionId);
-        currentTarget.parent().siblings('.myModal-' + dataQuestionId).show();
-      });
-      $('.close').on('click', function(){
-        $('.cartQuestions').hide();
-        });
-
-
-function getUserAttr(dataQuestionId) {
+$('.question-id').on('click', function(event) {
+  var currentTarget = $(event.currentTarget);
+  var dataQuestionId = currentTarget.attr('data-question-id');
+  getUserAnswerId(dataQuestionId);
+  currentTarget.parent().siblings('.myModal-' + dataQuestionId).show();
+});
+//Закрываем модалку
+$('.close').on('click', function(){
+  $('.cartQuestions').hide();
+});
+//Это запрос достает опрос по id
+function getUserAnswerId(dataQuestionId,data) {
     if (dataQuestionId) {
-        $.ajax({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-            method: "POST",
-            url: window.location.href + '/' + dataQuestionId,
-            dataType: 'html',
-            success: function(data) {
+      getAjax('POST',window.location.href + '/' + dataQuestionId,data,function (result) {
 
-            }
-        });
+      });
+        // $.ajax({
+        //     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        //     method: "POST",
+        //     url: window.location.href + '/' + dataQuestionId,
+        //
+        // });
     }
 }
+//Функция отвечающая за построение ajax Запросов
+function getAjax(newMethod,paramUrl,data,callback) {
+  // console.log(newMethod,paramUrl,data,callback,"+++++++++++==");
+  $.ajax({
+    headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url: paramUrl,
+    method: newMethod,
+    data:data
+  }).
+    done(function (data) {
+      callback(data);
+    }).fail(function (data) {
+    callback(data);
+  })
+};
+//Логика разкрытия и закрытия модалки с графиком
 $(function () {
    $('.result').on('click', function () {
     $('.my_result_modal').show();
@@ -40,31 +55,16 @@ $(function () {
          $('.my_result_modal').hide();
        });
 });
-
-
-function getAjax(newMethod,paramUrl,callback) {
-  $.ajax({
-    url: paramUrl,
-    method: newMethod,
-  }).
-    done(function (data) {
-      callback(data);
-    }).fail(function (data) {
-    callback(data);
-  })
-
-};
-
-
+//Передача данных в график
 function parseResponse(responseRet) {
   console.log(responseRet);
   var responseObj = responseRet.map(function (myArrayObj) {
         return myArrayObj.question_id;
-
-  });
+      });
   alert(responseObj);
+//Лоика построенияграфика
   var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
+  var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'bar',
 
@@ -75,7 +75,7 @@ var chart = new Chart(ctx, {
             label: "My First dataset",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-          data: responseObj,
+            data: responseObj,
         }]
     },
 
@@ -83,35 +83,34 @@ var chart = new Chart(ctx, {
     options: {}
 });
 }
-
-function doSome(){
-   getAjax('GET','http://127.0.0.1:8000/admin/column', function(result){
-     if (result != "error!" )
+//Достаемданные для построения графика
+function getDataGraph(data){
+  getAjax('GET','http://127.0.0.1:8000/admin/column',data, function(result){
+    if (result != "error!" ){
         parseResponse(JSON.parse(result));
-     else
-        console.log(result,"lkl");
-   });
+      }else{
+      console.log(result,"Error json not found!");
+    }
+  });
  };
 
-
-  $('.result').on('click', function () {
-      doSome();
+$('.result').on('click', function () {
+      getDataGraph();
   });
-
-});
-//Ajax Запрос на добовление варианта ответа юзера !
-function saveUserAnswer(methodPost, url, type, headers) {
+  //Ajax Запрос на добовление варианта ответа юзера !
   $('.form-save').on('click', function () {
-    $.ajax({
-      headers: headers,
-      method: methodPost,
-      url: url,
-      dataType: type,
-      success: function(data) {
-      }
+    var form = document.getElementById("saveForm");
+    var user_answer =  form.elements["user_answer"].value;
+      saveUserAnswer(user_answer);
     });
-    return false;
+
+function saveUserAnswer(user_answer) {
+  getAjax('POST',"http://127.0.0.1:8000/user/store",user_answer,function (result) {
+    if (result != "error!" ){
+        alert(user_answer);
+    }else{
+      console.log(result,"User answer not add");
+    }
   });
-};
-saveUserAnswer("POST","http://127.0.0.1:8000/user/store",'html',{
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},);
+}
+});

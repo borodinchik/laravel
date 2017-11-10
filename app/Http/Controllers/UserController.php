@@ -28,13 +28,13 @@ public function show($id)
    $question= Question::with(['answer'])->where('id', '=' ,$id)->first();
           return view('users.show', compact('question'));
  }
-public function storeUserAnswer(UserAnswerRequest $request)
+public function store(UserAnswerRequest $request)
 {//Добавляем ответ юзера в базу данных в таблицу answers
       $userAnswer = new UserAnswers();
       $userAnswer->user_answer = $request['user_answer'];
-      // dd($userAnswer->toArray());
-      $userAnswer->save();
-        return redirect()->back();
+      dd($userAnswer->toArray());
+      // $userAnswer->save();
+      //   return redirect()->back();
 
 }
 

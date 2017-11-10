@@ -22,5 +22,13 @@ Route::prefix('admin')->group(function(){
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
     Route::post('/{id}', 'UserController@show')->name('show.question');
-    Route::post('/store', 'UserController@storeUserAnswer')->name('save.answer.user');//Отправляем ответ юзера в бд!
+    Route::get('/store', 'UserController@store')->name('save.answer.user');
+    Route::post('/store', 'UserController@store')->name('save.answer.user');
+
+    // Route::post('/store', function($data)
+    // {
+    //   dd('qwqwqwqw');
+    //
+    // });
+    //Отправляем ответ юзера в бд!
 });

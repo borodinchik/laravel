@@ -19,13 +19,13 @@ class UserController extends Controller
   //Вытягиваем весь сисок опросов
 public function index()
   {
-      $questions= Question::get();
+      $questions = Question::get();
           return view('users.index', compact('questions'));
         }
 
 public function show($id)
  {
-   $question= Question::with(['answer'])->where('id', '=' ,$id)->first();
+   $question = Question::with(['answer'])->where('id', '=' ,$id)->first();
           return view('users.show', compact('question'));
  }
 public function store(UserAnswerRequest $request)
@@ -37,6 +37,7 @@ public function store(UserAnswerRequest $request)
       //   return redirect()->back();
 
 }
+
 
 
       }

@@ -88,6 +88,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
     {{-- <script src="{{ asset('js/charts.js') }}"></script> --}}
 
+    <div class="alert alert-success" role="alert">...</div>
 
 </body>
 </html>

@@ -81,14 +81,14 @@ $(function () {
        });
 });
 //Передача данных в график
-function parseResponse(responseRet) {
-  console.log(responseRet);
-  var responseObj = responseRet.map(function (myArrayObj) {
-        return myArrayObj.user_answers;
-      });
-  alert(responseObj);
+// function parseResponse(responseRet) {
+//   console.log(responseRet);
+//   var responseObj = responseRet.map(function (myArrayObj) {
+//         return myArrayObj.user_answers;
+//       });
+//   alert(responseObj);
 
-Лоика построенияграфика
+// Лоика построенияграфика
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -109,7 +109,7 @@ function parseResponse(responseRet) {
     options: {}
 });
 
-Достаемданные для построения графика
+// Достаемданные для построения графика
 function getDataGraph(data){
   getAjax('GET','/admin/column',data, function(result){
     if (result != "error!" ){
@@ -124,24 +124,25 @@ function getDataGraph(data){
 //       getDataGraph();
 //   });
   //Ajax Запрос на добовление варианта ответа юзера !
-  $('.form-save').on('submit', function (e) {
+  // $('.form-save').on('submit', function (e) {
 //     $('myModal-' + dataQuestionId).hide();
 //       $('.modal-loader').hide();
 //         setTimeout(function () {
 // 		        $('.alert-success').show();
 // }, 3000);
-  e.preventDefault();
-    var formValue = $(this).find('input:checked').val();
-      saveUserAnswer({'user_answer_id':formValue});
-    });
+//   e.preventDefault();
+//     var formValue = $(this).find('input:checked').val();
+//       saveUserAnswer({'user_answer_id':formValue});
+//     });
+//
+// function saveUserAnswer(data) {
+//   getAjax('POST',"/user/store",data,function (result) {
+//     if (result != "error!" ){
+//       console.log(data);
+//     }else{
+//       console.log(result,"User answer not add");
+//       }
+//     });
+//   }
 
-function saveUserAnswer(data) {
-  getAjax('POST',"/user/store",data,function (result) {
-    if (result != "error!" ){
-      console.log(data);
-    }else{
-      console.log(result,"User answer not add");
-      }
-    });
-  }
 });

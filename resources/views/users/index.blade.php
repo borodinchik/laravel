@@ -31,13 +31,12 @@
                             <div class="form-group">
 
                             <form  action="{{ url('/user/store') }}" method="post"  class="form-save">
-
+                                {{-- <form action="/user/xuu" method="post" class="form-save"> --}}
                                 <h4 class="text-center">{{ $question->body }}</h4>
                                   {{ csrf_field() }}
+                                  {{-- <input type="text" value="this is my text" name="anton"> --}}
                                     @foreach ($question->answer as $value)
-                                      {{-- <div class="input-answer">
 
-                                      </div> --}}
                                         <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
                                         {{ $value->answer }}
                                       @endforeach

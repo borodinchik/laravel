@@ -31,15 +31,25 @@ public function show($id)
  }
 
  //Добавляем ответ юзера в базу данных в таблицу answers
-// public function store(UserAnswerRequest $request)
-// {
+public function store(UserAnswerRequest $request)
+{
+  // $b = "Hello World!!!";
+  // // $a =  \Request::get('anton');
+  // dd($b);
 //   dd($request->all());
 
-    // $userAnswer = new UserAnswers();
-    // $userAnswer = $request->input('user_answer_id');
+    $userAnswer = new UserAnswers();
+    $userAnswer = $request->input('user_answer_id');
 //     // $userAnswer->user_id = Auth::user()->id;
-    // dd($userAnswer);
+    dd($userAnswer);
     // $userAnswer->save();
     //   return redirect()->back();
-  // }
+   }
+
+  //  public function xuu()
+  //  {
+  //    return \Request::get('anton');
+  //    // return \Request::all();
+  //    // return Input::all();
+  //  }
 }

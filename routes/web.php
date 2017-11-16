@@ -14,7 +14,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/all_users', 'AdminController@showAllUsers')->name('show.all.users');
     Route::get('/all_questions', 'AdminController@indexQuestionsList')->name('all-questions');
     Route::delete('/{id}', 'AdminController@destroy')->name('delete.question');
-    // Route::get('/graph', 'AdminController@getDataGraph');
+    Route::get('/graph', 'AdminController@getDataGraph');
 
     //test Routes
 });

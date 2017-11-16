@@ -1,14 +1,20 @@
+
 $(document).ready(function() {
 //Добавляем новый инпу варианта ответа вадминке
 $('#input').click(function() {
-    var random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-    var str = '<input class="form-control" type="text" name="answer[]-' +
+  var random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+  var str = '<input class="form-control" type="text" name="answer[]-' +
         random + '" placeholder="Вариант ответа:"/><br> ';
     $('#sites').append(str);
 });
 //С помощью ajax выводим мадалку и форму по id
 $('.question-id').on('click', function(event) {
   $('.modal-loader').show(function () {
+    // var random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+    //
+    // var inputAnswer = '<input type="radio" name="user_answer_id[]-' + random +  '"value="{{ $value->id }}" required>';
+    // console.log(random);
+    // $('.input-answer').append(inputAnswer);
     $('.loader').show();
 
 
@@ -29,8 +35,7 @@ $('.close').on('click', function(){
 //Это запрос достает опрос по id
 function getUserAnswerId(dataQuestionId,data) {
     if (dataQuestionId) {
-    var ar  =   getAjax('POST',window.location.href + '/' + dataQuestionId,data,function (result) {
-      console.log(ar);
+      getAjax('POST',window.location.href + '/' + dataQuestionId,data,function (result) {
       });
     }
 }
@@ -54,15 +59,12 @@ function getAjax(newMethod,paramUrl,data,callback) {
 //   $('.loader').show();
 //   setTemeout(function(){
 //     $('.loader').hide();
-//
-//
-//
-//   },3000);
+//},3000);
 //
 // });
 
 
-//Логика разкрытия и закрытия модалки с графиком
+
 // $('.question-id').click(function () {
 //   $('.loader').show();
 //   setTimeout(function () {
@@ -79,12 +81,13 @@ $(function () {
        });
 });
 //Передача данных в график
-function parseResponse(responseRet) {
-  console.log(responseRet);
-  var responseObj = responseRet.map(function (myArrayObj) {
-        return myArrayObj.question_id;
-      });
-  alert(responseObj);
+// function parseResponse(responseRet) {
+//   console.log(responseRet);
+//   var responseObj = responseRet.map(function (myArrayObj) {
+//         return myArrayObj.user_answers;
+//       });
+//   alert(responseObj);
+
 //Лоика построенияграфика
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
@@ -93,19 +96,19 @@ function parseResponse(responseRet) {
 
     // The data for our dataset
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["Variant1", "Variant2", "Variant3", "Variant4", "Variant5", "Variant6", "Variant7"],
         datasets: [{
-            label: "My First dataset",
+            label: "Название опроса",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: responseObj,
+            data: [5,6,7,6,8,3,1,4]
         }]
     },
 
     // Configuration options go here
     options: {}
 });
-}
+
 //Достаемданные для построения графика
 // function getDataGraph(data){
 //   getAjax('GET','/admin/column',data, function(result){
@@ -117,9 +120,9 @@ function parseResponse(responseRet) {
 //   });
 //  };
 
-$('.result').on('click', function () {
-      getDataGraph();
-  });
+// $('.result').on('click', function () {
+//       getDataGraph();
+//   });
   //Ajax Запрос на добовление варианта ответа юзера !
   $('.form-save').on('submit', function (e) {
 //     $('myModal-' + dataQuestionId).hide();
@@ -138,7 +141,7 @@ function saveUserAnswer(data) {
       console.log(data);
     }else{
       console.log(result,"User answer not add");
-    }
-  });
-}
+      }
+    });
+  }
 });

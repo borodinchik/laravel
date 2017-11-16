@@ -2,12 +2,13 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -88,7 +89,7 @@
     <script src="{{ asset('js/main.js') }}"></script>
     {{-- <script src="{{ asset('js/charts.js') }}"></script> --}}
 
-    <div class="alert alert-success" role="alert">...</div>
+    <div class="alert alert-success" role="alert"> “Спасибо за ваш голос”</div>
 
 </body>
 </html>

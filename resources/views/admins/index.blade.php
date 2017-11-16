@@ -7,13 +7,13 @@
           <div class="col-md-8 col-md-offset-2">
               <div class="panel panel-default">
                   <div class="panel-heading">Список Опросов<a href="{{ route('admin.dashboard') }}">|Admin panel</a>
-
-                      <div class="my_result_modal" >
+                    <div class="my_result_modal" >
                         <div class="modal-content-charts">
-                            <canvas id="myChart" width="400" height="400"></canvas>
                           <span class="close">&times</span>
+                          <canvas id="myChart" width="400" height="400"></canvas>
                         </div>
                       </div>
+
                       <div class="panel-body">
                       @if (session('status'))
                           <div class="alert alert-success">

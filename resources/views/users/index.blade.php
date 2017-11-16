@@ -27,14 +27,18 @@
                         <hr>
                         <div class="cartQuestions myModal-{{ $question->id }}" >
                           <div class="modal-content">
-
+                            <span class="close">&times</span>
                             <div class="form-group">
+
                             <form  action="{{ url('/user/store') }}" method="post"  class="form-save">
-                              <span class="close">&times</span>
+
                                 <h4 class="text-center">{{ $question->body }}</h4>
                                   {{ csrf_field() }}
                                     @foreach ($question->answer as $value)
-                                        <input type="radio" name="user_answer_id[]" value="{{ $value->id }}" required>
+                                      {{-- <div class="input-answer">
+
+                                      </div> --}}
+                                        <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
                                         {{ $value->answer }}
                                       @endforeach
                                         <br><button class="btn btn-sm btn-primary form-save" type="submit">Сохранить</button>

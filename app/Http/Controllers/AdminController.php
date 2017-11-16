@@ -51,19 +51,11 @@ public function destroy($id)
     $question = Question::with(['answer'])->where('id', '=', $id );
     $question->delete();
         return redirect()->back();
-
-    }
-    // public function getInfoGraph()
-    // {
-        
-    //     DB::select("select count(user_id) as count_user_id from (
-    //         select questions.id as question_id,answers.id as answer_id,user_answers.user_id
-    //         from questions 
-    //         inner join answers on answers.question_id = questions.id
-    //         inner join user_answers on user_answers.user_answer_id = answers.id
-    //         where question_id = ?
-    //         ) as temp
-    //         group by temp.answer_id");
-        
-    // }
+      }
+// public function getDataGraph()
+// {
+//   $questions = UserAnswers::all()->toArray();
+//   //  dd($questions);
+//   return viev('admins.index', compact($questions));
+// }
 }

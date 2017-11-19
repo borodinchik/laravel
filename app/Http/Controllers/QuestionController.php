@@ -15,11 +15,11 @@ public function __consruct()
   }
 
 public function index(Question $questions)
-  {
+ {
     //show all list qwestion
     $questions = $questions->all();
         return view('questions.index', compact('questions'));
-  }
+ }
 public function show($id)
  {
       //show questions by "id"
@@ -35,7 +35,8 @@ public function store(QuestionsRequest $request)
     $question->body = $request['body'];
     $question->save();
 
-foreach ($request->input('answer') as $answer) {
+foreach ($request->input('answer') as $answer)
+{
     $newAnswer = new Answer();
     $newAnswer->question_id = $question->id;
     $newAnswer->answer = $answer;

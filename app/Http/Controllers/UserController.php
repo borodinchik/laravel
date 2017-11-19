@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\UserAnswers;
 use App\Question;
+use App\Answer;
+
 
 
 class UserController extends Controller
@@ -30,26 +32,20 @@ public function show($id)
    return view('users.show', compact('question'));
  }
 
- //Добавляем ответ юзера в базу данных в таблицу answers
-public function store(UserAnswerRequest $request)
-{
-  // $b = "Hello World!!!";
-  // // $a =  \Request::get('anton');
-  // dd($b);
-//   dd($request->all());
+ //Добовляем в базу ответ юзера , id юзера , id вопроса
+ public function store(UserAnswerRequest $request)
+ {
 
-    $userAnswer = new UserAnswers();
-    $userAnswer = $request->input('user_answer_id');
-//     // $userAnswer->user_id = Auth::user()->id;
-    dd($userAnswer);
-    // $userAnswer->save();
-    //   return redirect()->back();
-   }
+   $createNewAnswer = new UserAnswers();
+  //  $createNewAnswer->question_id;
+  //  $createNewAnswer->answer_id;
+   
+   $createNewAnswer->user_answer_id = $request['user_answer_id'];
+    $createNewAnswer->user_id = Auth::user()->id;
+  dd($createNewAnswer->toArray());
+  //  $createNewAnswer->save();
+   
+  return redirect('user');
+// }
 
-  //  public function xuu()
-  //  {
-  //    return \Request::get('anton');
-  //    // return \Request::all();
-  //    // return Input::all();
-  //  }
-}
+ }}

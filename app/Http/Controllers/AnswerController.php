@@ -9,6 +9,9 @@ use DB;
 
 class AnswerController extends Controller
 {
-//   этим меттодом передаем данные для построения графика !!
+  public function userAnswer()
+  {
+     return $this->bilongsTo(UserAnswers::class);
+  }
 
 }

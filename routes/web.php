@@ -23,11 +23,10 @@ Route::prefix('admin')->group(function(){
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
     // Route::get('/{id}', 'UserController@show');
-    Route::post('/{id}', 'UserController@show')->name('show.question');
     Route::post('/store', 'UserController@store')->name('save.answer.user');
+    Route::post('/{id}', 'UserController@show')->name('show.question');
+
     // Route::post('/xuu', 'UserController@xuu');
     // Route::get('/store', 'UserController@store');
 
 });
-Route::get('/test', 'TestController@index');
-Route::post('/testStore', 'TestController@store')->name('storeTest');

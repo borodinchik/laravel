@@ -11,7 +11,7 @@ class AnswerController extends Controller
 {
   public function userAnswer()
   {
-     return $this->bilongsTo(UserAnswers::class);
+     return $this->bilongsTo(UserAnswers::class,'question_id', 'id');
   }
 
 }

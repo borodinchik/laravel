@@ -24,7 +24,9 @@ Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
     // Route::get('/{id}', 'UserController@show');
     Route::post('/store', 'UserController@store')->name('save.answer.user');
+    // Route::get('/store/{id}', 'UserController@store');//передаем id 
     Route::post('/{id}', 'UserController@show')->name('show.question');
+
 
     // Route::post('/xuu', 'UserController@xuu');
     // Route::get('/store', 'UserController@store');

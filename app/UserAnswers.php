@@ -10,16 +10,16 @@ class UserAnswers extends Model
 {
   public function getAnswerId()
   {
-    return $this->hasMany(Answer::class, 'user_answer_id', 'id');
+    return $this->belongsTo(Answer::class);//UserAnswers связываю с Answer
   }
-  public function getUserId()
-  {
-    return $this->hasMany(User::class, 'user_id', 'id');
-  }
-  public function getQuestionId()
-  {
-    return $this->hasMany(Question::class, 'question_id', 'id');
-  }
+  // public function getUserId()
+  // {
+  //   return $this->hasMany(User::class);
+  // }
+  // public function getQuestionId()
+  // {
+  //   return $this->hasMany(Question::class);
+  // }
 
 
 }

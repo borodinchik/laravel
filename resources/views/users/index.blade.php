@@ -20,7 +20,7 @@
                       </div>
                       @foreach ($questions as $question)
                         <div class="form-group">
-                          <a  class="question-id" data-question-id="{{ $question->id }}">{{-- Передаю id  в ajax --}}
+                          <a  class="question-id answer-{{ $question->id  }}" data-question-id="{{ $question->id }}">{{-- Передаю id  в ajax --}}
                             {{ $question->title }}
                           </a>
                         </div>
@@ -31,7 +31,6 @@
                             <div class="form-group">
 
                             <form  action="{{ url('/user/store') }}" method="post"  class="form-save">
-                                {{-- <form action="/user/xuu" method="post" class="form-save"> --}}
                                 <h4 class="text-center">{{ $question->body }}</h4>
                                   {{ csrf_field() }}
                                   {{-- <input type="text" value="this is my text" name="anton"> --}}
@@ -40,7 +39,7 @@
                                         <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
                                         {{ $value->answer }}
                                       @endforeach
-                                        <br><button class="btn btn-sm btn-primary form-save" type="submit">Сохранить</button>
+                                        <br><button class="btn btn-sm btn-primary form-save save" type="submit">Сохранить</button>
                                       </form>
                                     </div>
                                   </div>

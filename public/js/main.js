@@ -32,6 +32,10 @@ $('.close').on('click', function(){
   $('.cartQuestions').hide();
     $('.modal-loader').hide();
 });
+//Скрываем опрос , на который был дан ответ
+// $('.save').on('click',function () {
+//   $('.answer-' + dataQuestionId).hide();
+// });
 //Это запрос достает опрос по id
 function getUserAnswerId(dataQuestionId,data) {
     if (dataQuestionId) {

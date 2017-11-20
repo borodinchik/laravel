@@ -35,17 +35,14 @@ public function show($id)
  //Добовляем в базу ответ юзера , id юзера , id вопроса
  public function store(UserAnswerRequest $request)
  {
-
    $createNewAnswer = new UserAnswers();
-  //  $createNewAnswer->question_id;
-  //  $createNewAnswer->answer_id;
-   
    $createNewAnswer->user_answer_id = $request['user_answer_id'];
-    $createNewAnswer->user_id = Auth::user()->id;
-  dd($createNewAnswer->toArray());
+   $createNewAnswer->user_id = Auth::user()->id;
+   $createNewAnswer->question_id = 1;//передать id вопроса на который был дан ответ
+   dd($createNewAnswer->toArray());
   //  $createNewAnswer->save();
-   
-  return redirect('user');
+
+  // return redirect('user');
 // }
 
  }}

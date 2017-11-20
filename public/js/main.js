@@ -41,7 +41,6 @@ function getUserAnswerId(dataQuestionId,data) {
 }
 //Функция отвечающая за построение ajax Запросов
 function getAjax(newMethod,paramUrl,data,callback) {
-  // console.log(newMethod,paramUrl,data,callback,"+++++++++++==");
   $.ajax({
     headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     url: paramUrl,
@@ -89,25 +88,25 @@ $(function () {
 //   alert(responseObj);
 
 // Лоика построенияграфика
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var chart = new Chart(ctx, {
+  // var ctx = document.getElementById('myChart').getContext('2d');
+  // var chart = new Chart(ctx, {
     // The type of chart we want to create
-    type: 'bar',
+    // type: 'bar',
 
     // The data for our dataset
-    data: {
-        labels: ["Variant1", "Variant2", "Variant3", "Variant4", "Variant5", "Variant6", "Variant7"],
-        datasets: [{
-            label: "Название опроса",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [5,6,7,6,8,3,1,4]
-        }]
-    },
+    // data: {
+    //     labels: ["Variant1", "Variant2", "Variant3", "Variant4", "Variant5", "Variant6", "Variant7"],
+    //     datasets: [{
+    //         label: "Название опроса",
+    //         backgroundColor: 'rgb(255, 99, 132)',
+    //         borderColor: 'rgb(255, 99, 132)',
+    //         data: [5,6,7,6,8,3,1,4]
+    //     }]
+    // },
 
     // Configuration options go here
-    options: {}
-});
+    // options: {}
+// });
 
 // Достаемданные для построения графика
 function getDataGraph(data){

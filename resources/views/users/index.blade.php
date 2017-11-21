@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <input type="hidden" id="showQuestion" value="{{ route('show.question') }}"> --}}
   <div class="container">
       <div class="row">
 
@@ -33,10 +32,8 @@
                             <form  action="{{ url('/user/store') }}" method="post"  class="form-save">
                                 <h4 class="text-center">{{ $question->body }}</h4>
                                   {{ csrf_field() }}
-                                  {{-- <input type="text" value="this is my text" name="anton"> --}}
                                     @foreach ($question->answer as $value)
-
-                                        <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
+                                      <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
                                         {{ $value->answer }}
                                       @endforeach
                                         <br><button class="btn btn-sm btn-primary form-save save" type="submit">Сохранить</button>

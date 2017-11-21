@@ -7,10 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    public function userAnswer()
-    {
-       return $this->bilongsTo(UserAnswers::class);
-    }
     use Notifiable;
 
     /**

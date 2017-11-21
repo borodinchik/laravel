@@ -13,22 +13,19 @@ class AdminLoginController extends Controller
   {
     $this->middleware('guest:admin');
   }
-public function showLoginForm()
-    {
-      return view('auth.admin-login');
-    }
-
-public function login(AdminLoginRequest $request)
+  public function showLoginForm()
   {
-    //Attempt to login the user in
+    return view('auth.admin-login');
+  }
+  //Attempt to login the user in
+  public function login(AdminLoginRequest $request)
+  {
     if (Auth::guard('admin')->attempt([
-          'email' => $request->email,
-          'password' => $request->password],$request->remember))
-      {
-      //if successful, then redirect to their intendet location
-          return redirect()->intended(route('admin.dashboard'));
-        }
-    //if unssuccessful, then redirect back to the login with from data
-         return redirect()->back()->withInput($request->only('email','remember'));
+      'email' => $request->email,
+      'password' => $request->password],$request->remember))
+    {
+      return redirect()->intended(route('admin.dashboard'));//if successful, then redirect to their intendet location
+    }
+    return redirect()->back()->withInput($request->only('email','remember'));
   }
 }

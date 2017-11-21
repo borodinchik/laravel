@@ -39,7 +39,7 @@ $('.close').on('click', function(){
 //Это запрос достает опрос по id
 function getUserAnswerId(dataQuestionId,data) {
     if (dataQuestionId) {
-      getAjax('POST',window.location.href + '/' + dataQuestionId,data,function (result) {
+      getAjax('POST',window.location.href + dataQuestionId,data,function (result) {
       });
     }
 }

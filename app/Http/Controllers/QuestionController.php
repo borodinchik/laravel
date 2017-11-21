@@ -9,39 +9,39 @@ use App\Answer;
 
 class QuestionController extends Controller
 {
-public function __consruct()
+  public function __consruct()
   {
     $this->middleware('guest:admin');
   }
 
-public function index(Question $questions)
- {
+  public function index(Question $questions)
+  {
     //show all list qwestion
     $questions = $questions->all();
-        return view('questions.index', compact('questions'));
- }
-public function show($id)
- {
-      //show questions by "id"
+    return view('questions.index', compact('questions'));
+  }
+  public function show($id)
+  {
+    //show questions by "id"
     $questions = Question::with(['answer'])
-        ->where('id', '='  ,$id)->first();
-            return view('questions.show', compact('questions'));
- }
-public function store(QuestionsRequest $request)
- {
-//Админ добовляет новый опрос для юзеров
+    ->where('id', '='  ,$id)->first();
+    return view('questions.show', compact('questions'));
+  }
+  public function store(QuestionsRequest $request)
+  {
+    //Админ добовляет новый опрос для юзеров
     $question = new Question();
     $question->title = $request['title'];
     $question->body = $request['body'];
     $question->save();
 
-foreach ($request->input('answer') as $answer)
-{
+  foreach ($request->input('answer') as $answer)
+  {
     $newAnswer = new Answer();
     $newAnswer->question_id = $question->id;
     $newAnswer->answer = $answer;
     $newAnswer->save();
- }
-    return redirect()->back();
+  }
+  return redirect()->back();
     }
 }

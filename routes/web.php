@@ -5,7 +5,9 @@ Route::get('/', function()
 {
   return redirect('login');
 });
-//Admin Routes
+/*
+Admin Route
+*/
 Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::post('/questions', 'QuestionController@store');
@@ -14,21 +16,13 @@ Route::prefix('admin')->group(function(){
     Route::get('/all_users', 'AdminController@showAllUsers')->name('show.all.users');
     Route::get('/all_questions', 'AdminController@indexQuestionsList')->name('all-questions');
     Route::delete('/{id}', 'AdminController@destroy')->name('delete.question');
-    Route::get('/graph', 'AdminController@getDataGraph');
+  });
 
-    //test Routes
-});
-
-//Questions Routes
+/*
+ User Route
+*/
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
-    // Route::get('/{id}', 'UserController@show');
     Route::post('/store', 'UserController@store')->name('save.answer.user');
-    // Route::get('/store/{id}', 'UserController@store');//передаем id 
     Route::post('/{id}', 'UserController@show')->name('show.question');
-
-
-    // Route::post('/xuu', 'UserController@xuu');
-    // Route::get('/store', 'UserController@store');
-
-});
+  });

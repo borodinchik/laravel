@@ -9,12 +9,6 @@
                 <div class="panel-heading">Список Опросов<a href="{{ route('admin.dashboard') }}">|Admin panel</a>
                   <div class="my_result_modal">
                       <div class="modal-content-charts">
-                        @foreach ($allUsersAnswers as $all_users_answer)
-                            <input type="hidden" name="all_users_answer" data-all-users-answer="{{ $all_users_answer }}">
-                        @endforeach
-                        {{-- @foreach ($user_age as $adult)
-                            <input type="hidden" data-users-adult="{{ $adult }}">
-                        @endforeach --}}
                         <span class="close">&times</span>
                           <canvas id="myChart" width="400" height="400"></canvas>
                           <script>

@@ -50,6 +50,17 @@ function getAjax(newMethod,paramUrl,data,callback) {
 
 $(function () {
   $('.result').on('click', function () {
+    // Достаемданные для построения графика
+    function getDataCharts(data){
+      getAjax('GET','/admin/column',data, function(result){
+        if (result != "error!" ){
+          console.log(data);
+          // parseResponse(JSON.parse(result));
+        }else{
+          console.log(result,"Error json not found!");
+        }
+      });
+    };
     $('.my_result_modal').show();
   });
 $('.close').on('click', function () {
@@ -58,16 +69,7 @@ $('.close').on('click', function () {
 });
 
 
-// Достаемданные для построения графика
-function getDataGraph(data){
-  getAjax('GET','/admin/column',data, function(result){
-    if (result != "error!" ){
-        parseResponse(JSON.parse(result));
-      }else{
-      console.log(result,"Error json not found!");
-    }
-  });
- };
+
 
 // $('.result').on('click', function () {
 //       getDataGraph();

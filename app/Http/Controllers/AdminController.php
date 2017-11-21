@@ -52,4 +52,16 @@ class AdminController extends Controller
       $question->delete();
       return redirect()->back();
     }
+    public function getDataCharts()
+    {
+      $allUsersAnswers = DB::table('user_answers')
+      ->select(DB::raw('count(user_id) as count_all_user, user_answer_id'))
+      ->groupBy('user_answer_id')->get();
+
+      $userAge = User::selectRaw('count(your_age) as count_age, your_age')
+      ->groupBy('your_age')
+      ->where('users.your_age', '<=', '1999-01-01')->get();
+      dd($allUsersAnswers,$userAge->toArray());
+      // return view('admins.index', compact('allUsersAnswers', 'userAge'));
+    }
 }

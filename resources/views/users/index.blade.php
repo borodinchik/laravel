@@ -34,7 +34,7 @@
                         <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
                         {{ $value->answer }}
                       @endforeach
-                      <br><button class="btn btn-sm btn-primary form-save save" type="submit">Сохранить</button>
+                      <br><button class="btn btn-sm btn-primary form-save save-answer" type="submit">Сохранить</button>
                     </form>
                   </div>
                 </div>

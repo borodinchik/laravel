@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 //Добавляем новый инпу варианта ответа вадминке
 $('#input').click(function() {
@@ -11,7 +10,6 @@ $('#input').click(function() {
 $('.question-id').on('click', function(event) {
   $('.modal-loader').show(function () {
     $('.loader').show();
-
     var currentTarget = $(event.currentTarget);
     var dataQuestionId = currentTarget.attr('data-question-id');
     getUserAnswerId(dataQuestionId);
@@ -26,74 +24,53 @@ $('.close').on('click', function(){
   $('.cartQuestions').hide();
     $('.modal-loader').hide();
 });
-//Это запрос достает опрос по id
-function getUserAnswerId(dataQuestionId,data) {
-  if (dataQuestionId) {
-    getAjax('POST',window.location.href + dataQuestionId,data,function (result) {
-    });
-  }
-}
 //Функция отвечающая за построение ajax Запросов
-function getAjax(newMethod,paramUrl,data,callback) {
+function getAjax(getMethod,getUrl,dataType,callback) {
   $.ajax({
+
     headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    url: paramUrl,
-    method: newMethod,
-    data:data
+    method: getMethod,
+    url: getUrl,
   }).
     done(function (data) {
-      callback(data);
+       callback(data);
     }).fail(function (data) {
+        console.log("data fail");
     callback(data);
   })
 };
+function getDataCharts() {
+  getAjax('GET','http://127.0.0.1:8000/admin/column','json',function (result) {
+    console.log(result);
+  });
+}
 
-$(function () {
-  $('.result').on('click', function () {
-    // Достаемданные для построения графика
-    function getDataCharts(data){
-      getAjax('GET','/admin/column',data, function(result){
-        if (result != "error!" ){
-          console.log(data);
-          // parseResponse(JSON.parse(result));
-        }else{
-          console.log(result,"Error json not found!");
-        }
-      });
-    };
-    $('.my_result_modal').show();
+
+$('.result').on('click', function () {
+getDataCharts();
+  $('.my_result_modal').show();
   });
 $('.close').on('click', function () {
    $('.my_result_modal').hide();
  });
-});
 
 
-
-
-// $('.result').on('click', function () {
-//       getDataGraph();
-//   });
-  //Ajax Запрос на добовление варианта ответа юзера !
-  // $('.form-save').on('submit', function (e) {
-//     $('myModal-' + dataQuestionId).hide();
-//       $('.modal-loader').hide();
-//         setTimeout(function () {
-// 		        $('.alert-success').show();
-// }, 3000);
-//   e.preventDefault();
-//     var formValue = $(this).find('input:checked').val();
-//       saveUserAnswer({'user_answer_id':formValue});
-//     });
-//
-// function saveUserAnswer(data) {
-//   getAjax('POST',"/user/store",data,function (result) {
-//     if (result != "error!" ){
-//       console.log(data);
-//     }else{
-//       console.log(result,"User answer not add");
-//       }
-//     });
-//   }
-
+ //Это запрос достает опрос по id
+ function getUserAnswerId(dataQuestionId,data) {
+   if (dataQuestionId) {
+     getAjax('POST',window.location.href + '/' + dataQuestionId,data,function (result) {
+     });
+   }
+ }
+  //Дописать Acssess после отправки формы
+  // $('.save-answer').on('click', function () {
+  //   $('.cartQuestions').hide();
+  //
+  //     $('.alert-success').show(function () {
+  //       setTimeout(function () {
+  //           }, 3000);
+  //
+  //     });
+  //
+  // });
 });

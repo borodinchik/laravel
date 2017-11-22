@@ -54,14 +54,16 @@ class AdminController extends Controller
     }
     public function getDataCharts()
     {
-      $allUsersAnswers = DB::table('user_answers')
+      $count_user = DB::table('user_answers')
       ->select(DB::raw('count(user_id) as count_all_user, user_answer_id'))
-      ->groupBy('user_answer_id')->get()->toArray();
+      ->groupBy('user_answer_id')->get();
 
       $userAge = User::selectRaw('count(your_age) as count_age, your_age')
       ->groupBy('your_age')
-      ->where('users.your_age', '<=', '1999-01-01')->get()->toArray();
-       $array = [$allUsersAnswers,$userAge];
-       return response($array);
+      ->where('users.your_age', '<=', '1999-01-01')->get();
+// dd($count_user,$userAge);
+      return response()->json([
+      'data-user' => $count_user,'data-age' => $userAge
+    ],200)->header('Content-Type', 'application/json');
     }
 }

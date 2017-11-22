@@ -77,9 +77,7 @@
         @yield('content')
     </div>
   </div>
-
-
-    <!-- Scripts -->
+<!-- Scripts -->
     <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('js/Chart.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>

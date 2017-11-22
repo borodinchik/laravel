@@ -11,7 +11,7 @@
                       <div class="modal-content-charts">
                         <span class="close">&times</span>
                           <canvas id="myChart" width="400" height="400"></canvas>
-                          <script>
+                          {{-- <script>
                           var ctx = document.getElementById('myChart').getContext('2d');
                           var chart = new Chart(ctx, {
                             // The type of chart we want to create
@@ -31,7 +31,7 @@
                             // Configuration options go here
                             options: {}
                           });
-                          </script>
+                          </script> --}}
                         </div>
                       </div>
                       <div class="panel-body">
@@ -43,7 +43,7 @@
                         @foreach ($questions as $question)
                           <div class="form-group">
                             <h3>{{ $question->title }}</h3>
-                            <a class="result" data-question="{{ $question }}" style="float: right;">Результат опросов</a>
+                            <a class="result" style="float: right;">Результат опросов</a>
                             {!! Form::open(['method' => 'DELETE', 'route' => ['delete.question', $question->id]]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
                             {!! Form::close() !!}

@@ -1,13 +1,12 @@
-
-//Передача данных в график
+/*Added data in charts*/
 function parseResponse(responseRet) {
   console.log(responseRet);
   var responseObj = responseRet.map(function (myArrayObj) {
-        return myArrayObj.user_answers;
+        return myArrayObj.data;
       });
   alert(responseObj);
-
-//Лоика построенияграфика
+}
+/*Logic in Charts*/
   var ctx = document.getElementById('myChart').getContext('2d');
   var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -23,7 +22,6 @@ function parseResponse(responseRet) {
             data: [5,6,7,6,8,3,1,4]
         }]
     },
-
     // Configuration options go here
     options: {},
   }

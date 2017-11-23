@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\User;
+use App\Answer;
 use DB;
 
 
@@ -52,18 +53,23 @@ class AdminController extends Controller
       $question->delete();
       return redirect()->back();
     }
-    public function getDataCharts()
+    public function getDataCharts($id)
     {
-      $count_user = DB::table('user_answers')
+      $getAnswersQuestions = Question::with(['answer'])
+      ->where('id', '='  ,$id)->first();
+
+      $countUser = DB::table('user_answers')
       ->select(DB::raw('count(user_id) as count_all_user, user_answer_id'))
       ->groupBy('user_answer_id')->get();
 
       $userAge = User::selectRaw('count(your_age) as count_age, your_age')
       ->groupBy('your_age')
       ->where('users.your_age', '<=', '1999-01-01')->get();
-// dd($count_user,$userAge);
+
       return response()->json([
-      'data-user' => $count_user,'data-age' => $userAge
+        $getAnswersQuestions,
+        $countUser,
+        $userAge
     ],200)->header('Content-Type', 'application/json');
     }
 }

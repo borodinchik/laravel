@@ -10,12 +10,12 @@
                   <div class="my_result_modal">
                       <div class="modal-content-charts">
                         <span class="close">&times</span>
-                          <canvas id="myChart" width="400" height="400"></canvas>
-                          {{-- Js Charts Logic --}}
 
-                        </div>
+                          <canvas id="myChart"></canvas>
+
                       </div>
-                      <div class="panel-body">
+                    </div>
+                    <div class="panel-body">
                         @if (session('status'))
                           <div class="alert alert-success">
                             {{ session('status') }}

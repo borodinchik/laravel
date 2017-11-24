@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+var myChart=null;
 /*This event create input option answers in Admin panel */
 $('#input').click(function() {
   var random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
@@ -74,13 +76,13 @@ drouCharts(responseObjAnswer,responseObjData,responseObjBody);
 
 /*We hang an event for ajax request*/
 $('.result').on('click', function () {
-var dataQuestionId = $(this).attr('id');
-// console.log(dataQuestionId);
-    getDataCharts(dataQuestionId);
+  var dataQuestionId = $(this).attr('id');
+  getDataCharts(dataQuestionId);
   $('.my_result_modal').show();
-  });
+});
 $('.close').on('click', function () {
    $('.my_result_modal').hide();
+   myChart.destroy()
  });
 
 /*This function gets questions list by id*/
@@ -90,34 +92,10 @@ function getUserAnswerId(dataQuestionId,data) {
      });
    }
  }
-
-//Дописать Acssess после отправки формы
-// $('.save-answer').on('click', function () {
-//   $('.cartQuestions').hide();
-//     $('.alert-success').show(function () {
-//       setTimeout(function () {
-//
-//       }, 3000);
-//     });
-//   });
 /*Added data in charts*/
-// function parseResponse(responseRet) {
-//
-//   // console.log(responseRet);
-//
-//   var responseObj = responseRet.map(function (responseData) {
-//
-//         return responseData;
-//
-//       });
-//
-//   alert(responseObj);
-// }
 function drouCharts(lables,data,body) {
-
-
 var ctx = document.getElementById("myChart");
-var myChart = new Chart(ctx, {
+myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: lables,

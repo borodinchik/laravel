@@ -28,7 +28,22 @@ class QuestionsTableSeeder extends Seeder
         'title' => 'Время года',
         'body' => 'Какая время года вам ближе?',
       ]);
-
-
+      /////
+      Question::create([
+        'title' => 'Интернет',
+        'body' => 'Сколько времени Вы проводите в интернете?',
+      ]);
+      Question::create([
+        'title' => 'Счастье',
+        'body' => 'Что нужно Вам сейчас для полного счастья?',
+      ]);
+      Question::create([
+        'title' => 'Очки',
+        'body' => 'А Вы носите очки?',
+      ]);
+      Question::create([
+        'title' => 'Цензура',
+        'body' => 'Вы ругаетесь матом?',
+      ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 // use Request;
+use Session;
 use App\Http\Requests\UserAnswerRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;

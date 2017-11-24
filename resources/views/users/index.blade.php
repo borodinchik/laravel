@@ -8,11 +8,7 @@
           <div class="panel-heading">Список Опросов<img class="avatar" src="/uploads/user_avatar/{{ Auth::user()->avatar }}" alt="">
           </div>
           <div class="panel-body">
-            @if (session('status'))
-              <div class="alert alert-success">
-                {{ session('status') }}
-              </div>
-            @endif
+    
             <div class="modal-loader">
               <div class="loader"></div>
             </div>

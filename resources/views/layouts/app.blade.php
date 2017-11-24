@@ -83,7 +83,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     {{-- <script src="{{ asset('js/charts.js') }}"></script> --}}
-
+@include('massages')
     <div class="alert alert-success" role="alert"> “Спасибо за ваш голос”</div>
 
 </body>

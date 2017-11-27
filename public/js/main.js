@@ -1,11 +1,11 @@
 $(document).ready(function() {
-var myChart=null;
+  var myChart=null;
 /*This event create input option answers in Admin panel */
 $('#input').click(function() {
   var random = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
   var str = '<input class="form-control" type="text" name="answer[]-' +
-        random + '" placeholder="Вариант ответа:"/><br> ';
-    $('#sites').append(str);
+  random + '" placeholder="Вариант ответа:"/><br> ';
+  $('#sites').append(str);
 });
 /*On click frome links we are show modal and get attrebut 'data-question-id'
 which is responsible for id questions modal*/
@@ -17,24 +17,24 @@ $('.question-id').on('click', function(event) {
     submitForm(dataQuestionId);
     getUserAnswerId(dataQuestionId);
     setTimeout(function () {
-     $('.loader').hide();
-     currentTarget.parent().siblings('.myModal-' + dataQuestionId).show();
-}, 3000);
+      $('.loader').hide();
+      currentTarget.parent().siblings('.myModal-' + dataQuestionId).show();
+    }, 3000);
   });
 });
 /*This function gets questions list by id*/
 function getUserAnswerId(dataQuestionId,data) {
   if (dataQuestionId) {
     getAjaxRequest('POST',window.location.href + '/' + dataQuestionId,data,function (result) {
-     });
-   }
- }
+
+    });
+  }
+}
 /*Close modal event */
 $('.close').on('click', function(){
   $('.cartQuestions').hide();
     $('.modal-loader').hide();
 });
-
 
 function postAjaxRequest(method,url,data,callback) {
   $.ajax({
@@ -50,20 +50,20 @@ function postAjaxRequest(method,url,data,callback) {
 };
 
 function submitForm(dataQuestionId) {
-$('.form-save').on('submit', function (e) {
-  e.preventDefault();
-  var formValue = $(this).find('input:checked').val();
-  postFormAnswer({'user_answer_id':formValue});
-  $('.id-answer-' + dataQuestionId).hide();
+  $('.form-save').on('submit', function (e) {
+    e.preventDefault();
+    var formValue = $(this).find('input:checked').val();
+    postFormAnswer({'user_answer_id':formValue});
+    $('.id-answer-' + dataQuestionId).hide();
     $('.myModal-' + dataQuestionId).css('display','none');
-      $('.modal-loader').css('display','none');
-        $('.alert-success').show(function () {
-          setTimeout(function () {
-            $('.alert-success').hide();
-          }, 3000);
-        });
-      });
-    }
+    $('.modal-loader').css('display','none');
+    $('.alert-success').show(function () {
+      setTimeout(function () {
+        $('.alert-success').hide();
+      }, 3000);
+    });
+  });
+}
 
 function postFormAnswer(data) {
   postAjaxRequest('POST',"/user/store",data,function (result) {
@@ -71,41 +71,39 @@ function postFormAnswer(data) {
       console.log(data);
     }else{
       console.log(result,"User answer not add");
-      }
-    });
-  }
-
-
- /*Function getAjax generate Ajax requests GET*/
- function getAjaxRequest(getMethod,getUrl,dataType,callback) {
-   $.ajax({
-     headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-     method: getMethod,
-     url: getUrl,
-   }).done(function (data) {
-     getData(data);
-     console.log(data);
-     callback(data);
-   }).fail(function (data) {
-     callback(data);
-   })
- };
- /*Ajax request from Charts date*/
- function getDataCharts(dataQuestionId) {
-   getAjaxRequest('GET','http://127.0.0.1:8000/admin/column/' + dataQuestionId,'json',function (result) {
-
-   });
- }
- /*We hang an event for ajax request*/
- $('.result').on('click', function () {
-   var dataQuestionId = $(this).attr('id');
-   getDataCharts(dataQuestionId);
-   $('.my_result_modal').show();
- });
- $('.close').on('click', function () {
-    $('.my_result_modal').hide();
-    myChart.destroy()
+    }
   });
+}
+/*Function getAjax generate Ajax requests GET*/
+function getAjaxRequest(getMethod,getUrl,dataType,callback) {
+  $.ajax({
+    headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    method: getMethod,
+    url: getUrl,
+  }).done(function (data) {
+    getData(data);
+    console.log(data);
+    callback(data);
+  }).fail(function (data) {
+    callback(data);
+  })
+};
+/*Ajax request from Charts date*/
+function getDataCharts(dataQuestionId) {
+  getAjaxRequest('GET','http://127.0.0.1:8000/admin/column/' + dataQuestionId,'json',function (result) {
+
+  });
+}
+/*We hang an event for ajax request*/
+$('.result').on('click', function () {
+  var dataQuestionId = $(this).attr('id');
+  getDataCharts(dataQuestionId);
+  $('.my_result_modal').show();
+});
+$('.close').on('click', function () {
+  $('.my_result_modal').hide();
+  myChart.destroy()
+});
 /*Function getData responsed data = "answer","count_user","count_age","body"*/
 function getData(data) {
   var responseObjAnswer = data[0].answer.map(function (myArrayObjAnswer) {

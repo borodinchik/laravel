@@ -10,9 +10,7 @@
                   <div class="my_result_modal">
                       <div class="modal-content-charts">
                         <span class="close">&times</span>
-
-                          <canvas id="myChart"></canvas>
-
+                        <canvas id="myChart"></canvas>
                       </div>
                     </div>
                     <div class="panel-body">

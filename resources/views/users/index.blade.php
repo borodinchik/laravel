@@ -8,17 +8,16 @@
           <div class="panel-heading">Список Опросов<img class="avatar" src="/uploads/user_avatar/{{ Auth::user()->avatar }}" alt="">
           </div>
           <div class="panel-body">
-    
+
             <div class="modal-loader">
               <div class="loader"></div>
             </div>
             @foreach ($questions as $question)
               <div class="form-group">
-                <a  class="question-id answer-{{ $question->id  }}" data-question-id="{{ $question->id }}" data-user-id="">{{-- Передаю id  в ajax --}}
+                <a  class="question-id id-answer-{{ $question->id  }}"  data-question-id="{{ $question->id }}" data-user-id="">{{-- Передаю id  в ajax --}}
                   {{ $question->title }}
                 </a>
               </div>
-              <hr>
               <div class="cartQuestions myModal-{{ $question->id }}" >
                 <div class="modal-content">
                   <span class="close">&times</span>

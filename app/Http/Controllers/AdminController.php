@@ -70,6 +70,6 @@ class AdminController extends Controller
         $getAnswersQuestions,
         $countUser,
         $userAge
-    ],200)->header('Content-Type', 'application/json');
+    ],200)->header('Content-Type', 'application/json')->redirect()->back();
     }
 }

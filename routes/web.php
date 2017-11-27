@@ -26,6 +26,8 @@ Route::prefix('admin')->group(function(){
 */
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
-    Route::post('/store', 'UserController@store')->name('save.answer.user')->middleware('web');
+    Route::post('/store', 'UserController@store')->name('save.answer.user');
+
+
     Route::post('/{id}', 'UserController@show')->name('show.question');
   });

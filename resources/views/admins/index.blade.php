@@ -10,7 +10,9 @@
                   <div class="my_result_modal">
                       <div class="modal-content-charts">
                         <span class="close">&times</span>
-                        <canvas id="myChart"></canvas>
+
+                          <canvas id="myChart" style="display:table;"></canvas>
+
                       </div>
                     </div>
                     <div class="panel-body">
@@ -34,4 +36,9 @@
                 </div>
               </div>
             </div>
+            {{-- Admins Scripts --}}
+            <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            <script src="{{ asset('js/charts.js') }}"></script>
           @endsection

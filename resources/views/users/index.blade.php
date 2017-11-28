@@ -5,19 +5,21 @@
         <div class="row">
           <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
-              <div class="panel-heading">Список Опросов<img class="avatar" src="/uploads/user_avatar/{{ Auth::user()->avatar }}" alt="">
-              </div>
+              <div class="panel-heading">Список Опросов<img class="avatar" src="/uploads/user_avatar/{{ Auth::user()->avatar }}" alt=""></div>
               <div class="panel-body">
                 <div class="modal-loader">
-                  <div class="loader"></div>
+                  <div class="loader">
+                  </div>
                 </div>
                 @foreach ($questions as $question)
                   <div class="form-group">
-                    <a  class="question-id id-answer-{{ $question->id  }}"  data-question-id="{{ $question->id }}" data-user-id="">{{-- Передаю id  в ajax --}}
+                    <a  class="question-id id-answer-{{ $question->id }}"  data-question-id="{{ $question->id }}" data-user-id="{{ Auth::user()->id }}">{{-- Передаю id  в ajax --}}
                       {{ $question->title }}
                     </a>
                   </div>
-                  <div class="cartQuestions myModal-{{ $question->id }}" >
+                @endforeach
+                @foreach ($questions as $question)
+                  <div class="cartQuestions myModal-{{ $question->id }}">
                     <div class="modal-content">
                       <span class="close">&times</span>
                       <div class="form-group">
@@ -42,4 +44,10 @@
     </div>
   </div>
 </div>
+<div class="alert alert-success" role="alert">Спасибо за ваш голос </div>
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+
+
+<script src="{{ asset('js/user.js') }}"></script>
 @endsection

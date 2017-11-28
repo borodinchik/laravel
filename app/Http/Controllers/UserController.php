@@ -30,7 +30,7 @@ class UserController extends Controller
   public function show($id)
   {
     $question = Question::with(['answer'])->where('id', '=' ,$id)->first();
-    return view('users.show', compact('question'));
+    return response('OK', 200);
   }
    //Добовляем в базу ответ юзера , id юзера , id вопроса
    public function store(UserAnswerRequest $request)
@@ -41,6 +41,6 @@ class UserController extends Controller
     $question_id = Answer::where('id', $request['user_answer_id'])->first();
     $createNewAnswer->question_id = $question_id->question_id;
     $createNewAnswer->save();
-    return redirect('user');
+    return response('OK',200);
   }
 }

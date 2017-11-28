@@ -1,15 +1,5 @@
 $(document).ready(function() {
-  function getAjax(getMethod,getUrl,callback) {
-    $.ajax({
-      headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-      method: getMethod,
-      url: getUrl,
-    }).done(function (data) {
-      callback(data);
-    }).fail(function (data) {
-      callback(data);
-    })
-  };
+
   var dataQuestionId;
 /*On click frome links we are show modal and get attrebut 'data-question-id'
 which is responsible for id questions modal*/
@@ -19,15 +9,25 @@ $('.question-id').on('click', function(event) {
     $('.loader').show();
     var currentTarget = $(event.currentTarget);
     dataQuestionId = currentTarget.attr('data-question-id');
-    getUserAnswerId(dataQuestionId);
+    // getUserAnswerId(dataQuestionId);
     setTimeout(function () {
       $('.loader').hide();
       currentTarget.parent().siblings('.myModal-' + dataQuestionId).show();
     }, 3000);
   });
 });
+function getAjax(getMethod,getUrl,callback) {
+  $.ajax({
+    headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    method: getMethod,
+    url: getUrl,
+  }).done(function (data) {
+    callback(data);
+  }).fail(function (data) {
+    callback(data);
+  })
+};
   /*This function gets questions list by id*/
-  //user
 function getUserAnswerId(dataQuestionId) {
   if (dataQuestionId) {
     getAjax('POST',window.location.href + '/' +  dataQuestionId,function (result) {
@@ -49,9 +49,7 @@ function getUserAnswerId(dataQuestionId) {
     });
   });
 
-
-  /*Function getAjax generate Ajax requests GET*/
-  //запрос на данные графика
+/*Function getAjax generate Ajax requests GET*/
 function postAjax(method,url,data,callback) {
   $.ajax({
     headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -69,9 +67,8 @@ function postAjax(method,url,data,callback) {
 function postFormAnswer(data) {
   postAjax('POST',"/user/store",data,function (result) {
     if (result != "error!" ){
-      console.log(data);
-    }else{
-      console.log(data,"User answer not add");
+      }else{
+        console.log(data,"User answer not add");
     }
   });
 }

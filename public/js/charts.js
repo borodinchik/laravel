@@ -69,7 +69,7 @@ myChart = new Chart(ctx, {
     data: {
         labels: lables,
         datasets: [{
-            label: 'ok',
+            label: body,
             data: data,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

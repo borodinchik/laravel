@@ -23,7 +23,7 @@
                     <div class="modal-content">
                       <span class="close">&times</span>
                       <div class="form-group">
-                        <form  action="{{ url('/user/store') }}" method="post"  class="form-save">
+                        <form  class="form-save">
                           <h4 class="text-center">{{ $question->body }}</h4>
                           {{ csrf_field() }}
                           @foreach ($question->answer as $value)

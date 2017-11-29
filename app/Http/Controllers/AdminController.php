@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Illuminate\Support\Carbon;
 use App\Question;
 use App\User;
 use App\Answer;
+use Carbon\Carbon;
 use DB;
 
 
@@ -55,6 +57,12 @@ class AdminController extends Controller
     }
     public function getDataCharts($id)
     {
+
+      // $data = Carbon::now()->subYear(18);
+      //
+      //  $data->year;
+      // dd($data);
+
       $getAnswersQuestions = Question::with(['answer'])
       ->where('id', '='  ,$id)->first();
 
@@ -65,11 +73,12 @@ class AdminController extends Controller
       $userAge = User::selectRaw('count(your_age) as count_age, your_age')
       ->groupBy('your_age')
       ->where('users.your_age', '<=', '1999-01-01')->get();
-
-      return response()->json([
-        $getAnswersQuestions,
-        $countUser,
-        $userAge
-    ],200)->header('Content-Type', 'application/json');
+      dd($userAge->toArray());
+    //
+    //   return response()->json([
+    //     $getAnswersQuestions,
+    //     $countUser,
+    //     $userAge
+    // ],200)->header('Content-Type', 'application/json');
     }
 }

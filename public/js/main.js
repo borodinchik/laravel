@@ -9,5 +9,4 @@ $('#input').click(function() {
   $('#sites').append(str);
 });
 
-
 });

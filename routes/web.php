@@ -17,8 +17,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/all_questions', 'AdminController@indexQuestionsList')->name('all-questions');
     Route::get('/column/{id}', 'AdminController@getDataCharts');
     Route::delete('/{id}', 'AdminController@destroy')->name('delete.question');
-
-  });
+});
 
 /*
  User Route
@@ -28,3 +27,4 @@ Route::prefix('user')->group(function() {
     Route::post('/store', 'UserController@store')->name('save.answer.user');
     Route::post('/{id}', 'UserController@show')->name('show.question');
   });
+// Route::get('/column', 'AdminController@getDataCharts');

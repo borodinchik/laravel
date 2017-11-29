@@ -12,7 +12,6 @@ function getQuestionId() {
 
 
 /*Function getAjax generate Ajax requests GET*/
-//запрос на данные графика
 function getAjaxRequest(getMethod,getUrl,dataType,callback) {
 $.ajax({
   headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

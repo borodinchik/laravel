@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\User;
 use App\Answer;
+use App\UserAnswers;
 use Carbon\Carbon;
 use DB;
 
@@ -57,28 +58,30 @@ class AdminController extends Controller
     }
     public function getDataCharts($id)
     {
-
-      // $data = Carbon::now()->subYear(18);
-      //
-      //  $data->year;
-      // dd($data);
-
       $getAnswersQuestions = Question::with(['answer'])
       ->where('id', '='  ,$id)->first();
 
-      $countUser = DB::table('user_answers')
-      ->select(DB::raw('count(user_id) as count_all_user, user_answer_id'))
+      $countUser = UserAnswers::selectRaw('count(user_id) as count_all_user, user_answer_id')
       ->groupBy('user_answer_id')->get();
 
-      $userAge = User::selectRaw('count(your_age) as count_age, your_age')
-      ->groupBy('your_age')
-      ->where('users.your_age', '<=', '1999-01-01')->get();
-      dd($userAge->toArray());
-    //
-    //   return response()->json([
-    //     $getAnswersQuestions,
-    //     $countUser,
-    //     $userAge
-    // ],200)->header('Content-Type', 'application/json');
+      $genderMan = User::selectRaw('count(gender) as count_gender_man')
+      ->where('gender', 'Man')->get();
+
+      $genderWomen = User::selectRaw('count(gender) as count_gender_women')
+      ->where('gender', 'Women')->get();
+
+      $adultAgeUser = User::where('your_age', '<=', '1999-01-01')
+      ->selectRaw('count(your_age) as count_adult_age_user')->get();
+
+      // dd($genderWomen->toArray(),$genderMan->toArray(),$adultAge->toArray());
+
+      return response()->json([
+        $getAnswersQuestions,
+        $countUser,
+        $adultAgeUser,
+        $genderMan,
+        $genderWomen,
+
+    ],200)->header('Content-Type', 'application/json');
     }
 }

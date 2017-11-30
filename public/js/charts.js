@@ -46,30 +46,38 @@ $('.close').on('click', function () {
 
 /*Function getData responsed data = "answer","count_user","count_age","body"*/
 function getData(data) {
-  var responseObjAnswer = data[0].answer.map(function (myArrayObjAnswer) {
-    return myArrayObjAnswer.answer;
+  var titleQuestions = data[0].body;
+
+  var userAnswer = data[0].answer.map(function (myArrayUserAnswer) {
+    return myArrayUserAnswer.answer;
   });
-  var responseObjData = data[1].map(function (myArrayObjData) {
-    return myArrayObjData.count_all_user;
+
+  var allUserCount = data[1].map(function (myArrayCountUser) {
+    return myArrayCountUser.count_all_user;
   });
-  // var responseObjUserAge = data[2].map(function (myArrayObjUserAge) {
-  //   return myArrayObjUserAge.count_age;
+
+  var userGenderMan = data[3].map(function (myArrayObjUserAlbumAgeMan) {
+    return myArrayObjUserAlbumAgeMan.count_gender_man;
+  });
+
+  // var userGenderWomen = data[4].map(function (myArrayObjUserGenderWomen) {
+  //   return myArrayObjUserGenderWomen.count_gender_women;
   // });
-  var responseObjBody = data[0].body;
-  drouCharts(responseObjAnswer,responseObjData,responseObjBody);
+
+  drouCharts(userAnswer,allUserCount,titleQuestions);
 }
 
 // /*Added data in charts*/
-function drouCharts(lables,data,body) {
-  console.log(lables,data,body);
+function drouCharts(userAnswer,allUserCount,titleQuestions,userGenderMan) {
+  console.log(userAnswer,allUserCount,titleQuestions,userGenderMan);
 var ctx = document.getElementById("myChart");
 myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: lables,
+        labels: [titleQuestions,userGenderMan],
         datasets: [{
-            label: body,
-            data: data,
+            label: titleQuestions,
+            data: allUserCount,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

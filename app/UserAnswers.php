@@ -8,6 +8,5 @@ use App\Question;
 
 class UserAnswers extends Model
 {
-
-
+  protected $fillable = ['question_id','user_id','user_answer_id'];
 }

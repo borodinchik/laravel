@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 control-label">Ф.И.О:</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"  autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -29,7 +29,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                             <label for="password" class="col-md-4 control-label">Вашь пароль:</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -57,14 +57,14 @@
                             <label for="password-confirm" class="col-md-4 control-label">Повторите пароль:</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="phone-number" class="col-md-4 control-label">Номер телефона:</label>
 
                             <div class="col-md-6">
-                                <input id="phone-number" type="text" class="form-control" name="phone_number" required>
+                                <input id="phone-number" type="text" class="form-control" name="phone_number" >
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@
                             <label for="your-age" class="col-md-4 control-label">Вашь возраст</label>
 
                             <div class="col-md-6">
-                                <input id="" type="date" class="form-control" name="your_age" required>
+                                <input id="" type="date" class="form-control" name="your_age" >
                             </div>
                         </div>
 
@@ -106,4 +106,5 @@
         </div>
     </div>
 </div>
+@include('layouts.errors')
 @endsection

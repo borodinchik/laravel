@@ -9,22 +9,25 @@ Route::get('/', function()
 Admin Route
 */
 Route::prefix('admin')->group(function(){
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::post('/questions', 'QuestionController@store');
+    Route::get('/', 'Admin\QuestionContriller@index')->name('admin.dashboard');//1
+
+    Route::post('/questions', 'Admin\QuestionContriller@store');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/all_users', 'AdminController@showAllUsers')->name('show.all.users');
-    Route::get('/all_questions', 'AdminController@indexQuestionsList')->name('all-questions');
-    Route::get('/column/{id}', 'AdminController@getDataCharts');
-    Route::delete('/{id}', 'AdminController@destroy')->name('delete.question');
+
+    Route::get('/all_users', 'Admin\UserListsContriller@showAllUsers')->name('show.all.users');
+
+    Route::get('/all_questions', 'Admin\QuestionContriller@QuestionsList')->name('all-questions');///2
+    Route::get('/column/{id}', 'Admin\QuestionContriller@getAdminCharts');//4
+    Route::delete('/{id}', 'Admin\QuestionContriller@destroyQuestion')->name('delete.question');//3
 });
 
 /*
  User Route
 */
 Route::prefix('user')->group(function() {
-    Route::get('/', 'UserController@index');
-    Route::post('/store', 'UserController@store')->name('save.answer.user');
-    Route::post('/{id}', 'UserController@show')->name('show.question');
+    Route::get('/', 'User\QuestionContriller@showQuestionsUser');
+    Route::post('/store', 'User\QuestionContriller@store')->name('save.answer.user');
+    Route::post('/{id}', 'User\QuestionContriller@show')->name('show.question');
   });
 // Route::get('/column', 'AdminController@getDataCharts');

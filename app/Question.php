@@ -7,6 +7,7 @@ use App\Answer;
 
 class Question extends Model
 {
+  protected $table = 'questions';
   protected $fillable = ['title','body'];
 
   public function answer()

@@ -60,23 +60,21 @@ function getData(data) {
     return myArrayObjUserAlbumAgeMan.count_gender_man;
   });
 
-  // var userGenderWomen = data[4].map(function (myArrayObjUserGenderWomen) {
-  //   return myArrayObjUserGenderWomen.count_gender_women;
-  // });
-
-  drouCharts(userAnswer,allUserCount,titleQuestions);
+  var userGenderWomen = data[4].map(function (myArrayObjUserGenderWomen) {
+    return myArrayObjUserGenderWomen.count_gender_women;
+  });
+  drouCharts(userAnswer,allUserCount,titleQuestions,userGenderMan);
 }
-
-// /*Added data in charts*/
+/*Added data in charts*/
 function drouCharts(userAnswer,allUserCount,titleQuestions,userGenderMan) {
   console.log(userAnswer,allUserCount,titleQuestions,userGenderMan);
 var ctx = document.getElementById("myChart");
 myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [titleQuestions,userGenderMan],
+        labels: userAnswer,
         datasets: [{
-            label: titleQuestions,
+            label: [titleQuestions,userGenderMan],
             data: allUserCount,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

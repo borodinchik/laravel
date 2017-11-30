@@ -8,7 +8,8 @@ use App\User;
 
 class Answer extends Model
 {
-protected $fillable = ['answer','question_id'];
+  protected $table = 'answers';
+  protected $fillable = ['answer','question_id'];
 
   public function user()
   {

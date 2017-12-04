@@ -28,6 +28,8 @@ Route::prefix('admin')->group(function(){
 Route::prefix('user')->group(function() {
     Route::get('/', 'User\QuestionContriller@showQuestionsUser');
     Route::post('/store', 'User\QuestionContriller@store')->name('save.answer.user');
+    Route::get('/store', 'User\QuestionContriller@store')->name('save.answer.user');
+
     Route::post('/{id}', 'User\QuestionContriller@show')->name('show.question');
   });
-// Route::get('/column', 'AdminController@getDataCharts');
+Route::get('/test', 'User\QuestionContriller@test');

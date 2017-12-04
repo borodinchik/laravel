@@ -9,5 +9,10 @@ use App\Question;
 class UserAnswers extends Model
 {
   protected $table = 'user_answers';
-  protected $fillable = ['question_id','user_id','user_answer_id'];
+  protected $fillable = ['user_id','answer_id'];
+
+  public function users()
+  {
+    return $this->belongsTo('App\User');
+  }
 }

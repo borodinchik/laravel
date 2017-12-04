@@ -23,6 +23,7 @@ class User extends Authenticatable
           'your_age',
           'gender',
           'avatar',
+          'admin'
     ];
 
     /**

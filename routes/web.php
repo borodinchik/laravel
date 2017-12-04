@@ -8,20 +8,16 @@ Route::get('/', function()
 /*
 Admin Route
 */
-Route::prefix('admin')->group(function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function(){
     Route::get('/', 'Admin\QuestionContriller@index')->name('admin.dashboard');//1
-
     Route::post('/questions', 'Admin\QuestionContriller@store');
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-
     Route::get('/all_users', 'Admin\UserListsContriller@showAllUsers')->name('show.all.users');
 
     Route::get('/all_questions', 'Admin\QuestionContriller@QuestionsList')->name('all-questions');///2
     Route::get('/column/{id}', 'Admin\QuestionContriller@getAdminCharts');//4
     Route::delete('/{id}', 'Admin\QuestionContriller@destroyQuestion')->name('delete.question');//3
 });
-
+// Route::get();
 /*
  User Route
 */

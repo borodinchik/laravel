@@ -41,17 +41,17 @@ class QuestionContriller extends Controller
    $createNewAnswer->save();
    return response('OK',200);
  }
- public function test()
- {
-
- $test = \App\UserAnswers::find(1);
- $user = \App\User::find(1);
- $someTest2 = $user->dropAnswer();
- // $someTest2 = $user->dropAnswer()->with(1)->join('user_answers','user_answers.user_id', '=', 'user.id');
- dd($someTest2);
+ // public function test()
  // {
- //   $drop = \App\UserAnswers::whereHas('answers', function ($query) {
- //     $query->where('user_id', '=',  '1');
- // })->get();
- }
+ //
+ // $test = \App\UserAnswers::find(1);
+ // $user = \App\User::find(1);
+ // $someTest2 = $user->dropAnswer();
+ // // $someTest2 = $user->dropAnswer()->with(1)->join('user_answers','user_answers.user_id', '=', 'user.id');
+ // dd($someTest2);
+ // // {
+ // //   $drop = \App\UserAnswers::whereHas('answers', function ($query) {
+ // //     $query->where('user_id', '=',  '1');
+ // // })->get();
+ // }
 }

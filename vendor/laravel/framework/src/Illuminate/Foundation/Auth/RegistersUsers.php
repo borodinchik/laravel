@@ -2,11 +2,9 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Input;
 
 trait RegistersUsers
 {
@@ -38,16 +36,6 @@ trait RegistersUsers
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
-                        //Добавляем фотоюзера
-
-              if (Input::hasFile('avatar')) {
-                $file = Input::file('avatar');
-                $name = time() . '-' . $file->getClientOriginalName();
-                $file = $file->move(public_path().'/img/', $name);
-                $avatar->avatar = $name;
-              }
-        $avatar->save();
-
     }
 
     /**
@@ -71,4 +59,4 @@ trait RegistersUsers
     {
         //
     }
-  }
+}

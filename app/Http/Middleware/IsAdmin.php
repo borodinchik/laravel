@@ -16,11 +16,9 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-      var_dump('admin');
       if (Auth::user() && Auth::user()->admin == 1) {
-var_dump("this is admin");
-        //return redirect('admin');
+        return $next($request);
       }
-        return false;
+        return redirect('/user');
     }
 }

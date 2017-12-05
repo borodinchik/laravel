@@ -14,7 +14,7 @@ class QuestionContriller extends Controller
 {
   public function __construct()
   {
-    $this->middleware('auth:admin');
+    //$this->middleware('auth:admin');
   }
 /*Подтягиваем вьюху главной страници админа*/
   public function index(Question $question)

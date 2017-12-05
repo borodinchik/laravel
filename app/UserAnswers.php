@@ -15,4 +15,5 @@ class UserAnswers extends Model
   {
     return $this->belongsTo('App\User');
   }
+
 }

@@ -14,5 +14,8 @@ class Question extends Model
   {
       return $this->hasMany(Answer::class);
   }
-
+ public function userQuestions()
+ {
+   return $this->bilongsTo('App\User');
+ }
 }

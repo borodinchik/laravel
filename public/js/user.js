@@ -8,7 +8,9 @@ $('.question-id').on('click', function(event) {
   $('.modal-loader').show(function () {
     $('.loader').show();
     var currentTarget = $(event.currentTarget);
+    console.log(currentTarget,'currentTarget');
     dataQuestionId = currentTarget.attr('data-question-id');
+    console.log(dataQuestionId,'dataQuestionId');
     // getUserAnswerId(dataQuestionId);
     setTimeout(function () {
       $('.loader').hide();
@@ -38,7 +40,8 @@ function getUserAnswerId(dataQuestionId) {
   $('.form-save').on('submit', function (e) {
     e.preventDefault();
     var formValue = $(this).find('input:checked').val();
-    postFormAnswer({'user_answer_id':formValue});
+    console.log(formValue,'formValue');
+    postFormAnswer({'answer_id':formValue});
     $('.id-answer-' + dataQuestionId).hide();
     $('.myModal-' + dataQuestionId).css('display','none');
     $('.modal-loader').css('display','none');
@@ -52,7 +55,7 @@ function getUserAnswerId(dataQuestionId) {
 /*Function getAjax generate Ajax requests GET*/
 function postAjax(method,url,data,callback) {
   $.ajax({
-    headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     method: method,
     url: url,
     data:data

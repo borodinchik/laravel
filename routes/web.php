@@ -28,4 +28,4 @@ Route::prefix('user')->group(function() {
 
     Route::post('/{id}', 'User\QuestionContriller@show')->name('show.question');
   });
-Route::get('/test', 'User\QuestionContriller@test');
+Route::get('/test', 'User\QuestionContriller@hideQuestionsUser');

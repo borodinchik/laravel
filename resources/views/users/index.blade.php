@@ -13,7 +13,7 @@
                 </div>
                 @foreach ($questions as $question)
                   <div class="form-group">
-                    <a  class="question-id id-answer-{{ $question->id }}"  data-question-id="{{ $question->id }}" data-user-id="{{ Auth::user()->id }}">{{-- Передаю id  в ajax --}}
+                    <a data-question-id="{{ $question->id }}" class="question-id id-answer-{{ $question->id }}">{{-- Передаю id  в ajax --}}
                       {{ $question->title }}
                     </a>
                   </div>
@@ -27,7 +27,7 @@
                           <h4 class="text-center">{{ $question->body }}</h4>
                           {{ csrf_field() }}
                           @foreach ($question->answer as $value)
-                            <input type="radio" name="user_answer_id" value="{{ $value->id }}" required>
+                            <input type="radio" name="answer_id" value="{{ $value->id }}" required>
                             {{ $value->answer }}
                           @endforeach
                           <br><button class="btn btn-sm btn-primary form-save save-answer" type="submit">Сохранить</button>

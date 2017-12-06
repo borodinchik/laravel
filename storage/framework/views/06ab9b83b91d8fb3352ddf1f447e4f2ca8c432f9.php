@@ -11,7 +11,7 @@
                 </div>
                 <?php $__currentLoopData = $questions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $question): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <div class="form-group">
-                    <a  class="question-id id-answer-<?php echo e($question->id); ?>"  data-question-id="<?php echo e($question->id); ?>" data-user-id="<?php echo e(Auth::user()->id); ?>">
+                    <a data-question-id="<?php echo e($question->id); ?>" class="question-id id-answer-<?php echo e($question->id); ?>">
                       <?php echo e($question->title); ?>
 
                     </a>
@@ -27,7 +27,7 @@
                           <?php echo e(csrf_field()); ?>
 
                           <?php $__currentLoopData = $question->answer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <input type="radio" name="user_answer_id" value="<?php echo e($value->id); ?>" required>
+                            <input type="radio" name="answer_id" value="<?php echo e($value->id); ?>" required>
                             <?php echo e($value->answer); ?>
 
                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

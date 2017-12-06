@@ -9,23 +9,21 @@ use App\Http\Requests\UserAnswerRequest;
 use App\Question;
 use App\User;
 use App\UserAnswers;
-use App\Answer;
-class QuestionContriller extends Controller
+use Auth;
+class QuestionController extends Controller
 {
   use QueriesRelationships;
   public function __consruct()
   {
     $this->middleware('auth');
   }
-  // public function index(Question $questions)
-  // {
-  //   $questions = $questions->all();
-  //   return view('questions.index', compact('questions'));
-  // }
   public function showQuestionsUser(Question $questions)
   {
-    $questions = $questions->get();
-    // dd($questions->toArray());
+    $usedQuestions = Auth::user()->answers->map(function ($answer) {
+    return $answer->question_id;
+    });
+    $questions = $questions->whereNotIn('id',$usedQuestions)->get();
+    // dd($questions);
 
     return view('users.index', compact('questions'));
   }
@@ -39,16 +37,10 @@ class QuestionContriller extends Controller
    $createNewAnswer = new UserAnswers();
    $createNewAnswer->answer_id = $request['answer_id'];
    $createNewAnswer->user_id = Auth::user()->id;
+  //  dd($createNewAnswer);
   //  $question_id = Answer::where('id', $request['user_answer_id'])->first();
   //  $createNewAnswer->question_id = $question_id->question_id;
    $createNewAnswer->save();
    return response('OK',200);
  }
-// public function hideQuestionsUser($id)
-// {
-//   $users = User::whereHas('questions', function($q){
-//       $q->where('id', '>=', $id);
-//   })->get();
-//   dd($users);
-// }
 }

@@ -34,13 +34,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function dropAnswer()
-    {
-      return $this->hasMany('App\UserAnswers');
-    }
     public function question()
     {
       return $this->hasMany('App\Question');
     }
+    public function answers()
+    {
+      return $this->belongsToMany('App\Answer', 'user_answers');
+    }
+
 
 }

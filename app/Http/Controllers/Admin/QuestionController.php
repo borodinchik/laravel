@@ -10,7 +10,7 @@ use App\Question;
 use App\Answer;
 use App\User;
 
-class QuestionContriller extends Controller
+class QuestionController extends Controller
 {
   public function __construct()
   {
@@ -54,17 +54,11 @@ class QuestionContriller extends Controller
     }
   public function getAdminCharts($id)
   {
-
-    // $data = Carbon::now()->subYear(18);
-    //
-    //  $data->year;
-    // dd($data);
-
     $getAnswersQuestions = Question::with(['answer'])
     ->where('id', '='  ,$id)->first();
 
-    $countUser = UserAnswers::selectRaw('count(user_id) as count_all_user, user_answer_id')
-    ->groupBy('user_answer_id')->get();
+    $countUser = UserAnswers::selectRaw('count(user_id) as count_all_user, answer_id')
+    ->groupBy('answer_id')->get();
 
     $genderMan = User::selectRaw('count(gender) as count_gender_man')
     ->where('gender', 'Man')->get();
@@ -78,7 +72,11 @@ class QuestionContriller extends Controller
     $imperfectAge = User::where('your_age', '>', '1999-01-01')
     ->selectRaw('count(your_age) as count_imperfect_age_user')->get();
 // dd($imperfectAge->toArray());
-        // dd($genderWomen->toArray(),$genderMan->toArray(),$adultAge->toArray(),$countUser->toArray(),$imperfectAge->toArray());
+        // dd($genderWomen,
+        // $genderMan,
+        // $adultAge,$countUser,
+        // $imperfectAge,
+        // $getAnswersQuestions);
 
         return response()->json([
           $getAnswersQuestions,

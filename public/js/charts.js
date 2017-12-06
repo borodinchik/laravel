@@ -66,15 +66,15 @@ function getData(data) {
   drouCharts(userAnswer,allUserCount,titleQuestions,userGenderMan);
 }
 /*Added data in charts*/
-function drouCharts(userAnswer,allUserCount,titleQuestions,userGenderMan) {
-  console.log(userAnswer,allUserCount,titleQuestions,userGenderMan);
+function drouCharts(userAnswer,allUserCount,titleQuestions,userGenderMan,userGenderWomen) {
+  console.log(userAnswer,allUserCount,titleQuestions,userGenderMan,userGenderWomen);
 var ctx = document.getElementById("myChart");
 myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: userAnswer,
         datasets: [{
-            label: [titleQuestions,userGenderMan],
+            label: [titleQuestions],
             data: allUserCount,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

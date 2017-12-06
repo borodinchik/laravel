@@ -4,6 +4,7 @@ namespace App;
 
 use App\UserAnswers;
 use App\User;
+use App\Question;
 
 
 class Answer extends Model
@@ -13,6 +14,11 @@ class Answer extends Model
 
   public function user()
   {
-    return $this->hasMany(User::class, 'answer_id', 'question_id' );
+    return $this->belongsToMany(User::class);
   }
+  public function question()
+  {
+    return $this->belongsTo(Question::class);
+  }
+
 }

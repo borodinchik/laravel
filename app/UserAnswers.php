@@ -11,7 +11,7 @@ class UserAnswers extends Model
   protected $table = 'user_answers';
   protected $fillable = ['user_id','answer_id'];
 
-  public function users()
+  public function user()
   {
     return $this->belongsTo('App\User');
   }

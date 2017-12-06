@@ -17,15 +17,10 @@ class QuestionController extends Controller
   {
     $this->middleware('auth');
   }
-  public function showQuestionsUser(Question $questions)
+  public function QuestionsUser()
   {
-    $usedQuestions = Auth::user()->answers->map(function ($answer) {
-    return $answer->question_id;
-    });
-    $questions = $questions->whereNotIn('id',$usedQuestions)->get();
-    // dd($questions);
-
-    return view('users.index', compact('questions'));
+    $hide = User::hideQuestionUser();
+    return $hide;
   }
   public function show($id)
   {

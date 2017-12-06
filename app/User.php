@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
+use App\Question;
 
 class User extends Authenticatable
 {
@@ -41,6 +43,14 @@ class User extends Authenticatable
     public function answers()
     {
       return $this->belongsToMany('App\Answer', 'user_answers');
+    }
+    static function hideQuestionUser()
+    {
+      $usedQuestions = Auth::user()->answers->map(function ($answer) {
+      return $answer->question_id;
+      });
+      $questions = Question::whereNotIn('id',$usedQuestions)->get();
+        return view('users.index', compact('questions'));
     }
 
 

@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'phone_number' => 'required|numeric|max:13',
             'your_age' => 'required|date',
             'gender' => 'required|string',
-            'avatar' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'avatar' => 'mimes:jpeg,jpg,png|max:1000',
           ]);
     }
 

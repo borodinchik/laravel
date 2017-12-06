@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']],function(){
  User Route
 */
 Route::prefix('user')->group(function() {
-    Route::get('/', 'User\QuestionController@showQuestionsUser');
+    Route::get('/', 'User\QuestionController@QuestionsUser');
     Route::post('/store', 'User\QuestionController@store')->name('save.answer.user');
     Route::post('/{id}', 'User\QuestionController@show')->name('show.question');
   });

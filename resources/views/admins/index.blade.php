@@ -10,9 +10,7 @@
                   <div class="my_result_modal">
                       <div class="modal-content-charts">
                         <span class="close">&times</span>
-{{-- <div class="chart-container" style="position: relative; height:40vh; width:80vw"> --}}
                             <canvas id="myChart"></canvas>
-{{-- </div> --}}
                       </div>
                     </div>
                     <div class="panel-body">
